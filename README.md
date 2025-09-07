@@ -5,4 +5,4 @@ App
 Orlando Gabriel Soto Ccopa  
 Lucarelly Sanchez  
 Angie
-Omar
+
