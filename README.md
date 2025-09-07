@@ -1,3 +1,7 @@
 # ARQ-WEB-5907
 
-App 
+App
+
+Orlando Gabriel Soto Ccopa  
+Lucarelly Sanchez  
+Angie
