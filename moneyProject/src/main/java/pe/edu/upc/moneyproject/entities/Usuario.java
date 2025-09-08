@@ -1,37 +1,29 @@
 package pe.edu.upc.moneyproject.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idArea;
+
+    @Column(name = "nombre",nullable = false,length = 30)
     private String nombre;
-    private String correo;
-    private String contrasenia;
+    @Column(name = "correo",nullable = false,length = 35)
+    private String responsibleArea;
+    @Column(name = "contrasenia",nullable = false)
+    private boolean statusArea;
 
-    public Usuario(String nombre, String correo, String contrasenia) {
+    public Usuario(int idArea, String nombre, String responsibleArea, boolean statusArea) {
+        this.idArea = idArea;
         this.nombre = nombre;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
+        this.responsibleArea = responsibleArea;
+        this.statusArea = statusArea;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public Usuario() {
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
     }
 }
