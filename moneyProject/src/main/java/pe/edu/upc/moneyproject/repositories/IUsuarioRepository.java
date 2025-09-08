@@ -1,4 +1,9 @@
 package pe.edu.upc.moneyproject.repositories;
 
-public interface IUsuarioRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import pe.edu.upc.moneyproject.entities.Usuario;
+
+@Repository
+public interface IUsuarioRepository extends JpaRepository<Usuario,Integer> {
 }
