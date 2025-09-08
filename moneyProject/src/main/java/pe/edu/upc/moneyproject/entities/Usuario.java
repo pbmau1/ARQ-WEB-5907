@@ -7,20 +7,20 @@ import jakarta.persistence.*;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idArea;
+    private int idUsuario;
 
     @Column(name = "nombre",nullable = false,length = 30)
     private String nombre;
     @Column(name = "correo",nullable = false,length = 35)
-    private String responsibleArea;
+    private String correo;
     @Column(name = "contrasenia",nullable = false)
-    private boolean statusArea;
+    private boolean contrasenia;
 
-    public Usuario(int idUsuario, String nombre, String responsibleArea, boolean statusArea) {
+    public Usuario(int idUsuario, String nombre, String correo, boolean contrasenia) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
-        this.responsibleArea = responsibleArea;
-        this.statusArea = statusArea;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
     }
 
     public Usuario() {
