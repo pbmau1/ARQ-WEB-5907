@@ -16,8 +16,8 @@ public class Usuario {
     @Column(name = "contrasenia",nullable = false)
     private boolean statusArea;
 
-    public Usuario(int idArea, String nombre, String responsibleArea, boolean statusArea) {
-        this.idArea = idArea;
+    public Usuario(int idUsuario, String nombre, String responsibleArea, boolean statusArea) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.responsibleArea = responsibleArea;
         this.statusArea = statusArea;
