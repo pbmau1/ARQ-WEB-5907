@@ -1,7 +1,6 @@
 package pe.edu.upc.moneyproject.entities;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
     @Entity
     @Table(name = "Usuario")
