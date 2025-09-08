@@ -15,18 +15,18 @@ import org.springframework.data.annotation.Id;
         private String nombre;
 
         @Column(name = "correo",nullable = false,length = 35)
-        private String responsibleArea;
+        private String correo;
 
         @Column(name = "contraseña",nullable = false)
-        private boolean statusArea;
+        private boolean contrasenia;
 
         public Usuario() {
         }
 
-        public Usuario(int idArea, String nombre, String responsibleArea, boolean statusArea) {
-            this.idUsuario = idArea;
+        public Usuario(int idUsuario, String nombre, String correo, boolean contrasenia) {
+            this.idUsuario = idUsuario;
             this.nombre = nombre;
-            this.responsibleArea = responsibleArea;
-            this.statusArea = statusArea;
+            this.correo = correo;
+            this.contrasenia = contrasenia;
         }
     }
