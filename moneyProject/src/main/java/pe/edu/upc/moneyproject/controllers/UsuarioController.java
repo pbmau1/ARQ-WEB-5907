@@ -2,7 +2,10 @@ package pe.edu.upc.moneyproject.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
@@ -40,13 +43,13 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No existe un usuario con el ID: " + id);
         }
-        uS.delete(id);
+        US.delete(id);
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
-        Usuario usuario = uS.listId(id);
+        Usuario usuario = US.listId(id);
         if (usuario == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
