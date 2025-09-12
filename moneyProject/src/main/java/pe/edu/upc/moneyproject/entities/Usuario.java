@@ -15,18 +15,50 @@ public class Usuario {
     private String nombre;
 
     @Column(name = "correo", nullable = false, length = 35)
-    private String responsibleArea;
+    private String correo;
 
-    @Column(name = "contraseña", nullable = false)
-    private boolean statusArea;
+    @Column(name = "contrasenia", nullable = false)
+    private String contrasenia;
 
     public Usuario() {
     }
 
-    public Usuario(int idArea, String nombre, String responsibleArea, boolean statusArea) {
-        this.idUsuario = idArea;
+    public Usuario(int idUsuario, String nombre, String correo, String contrasenia) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
-        this.responsibleArea = responsibleArea;
-        this.statusArea = statusArea;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 }
