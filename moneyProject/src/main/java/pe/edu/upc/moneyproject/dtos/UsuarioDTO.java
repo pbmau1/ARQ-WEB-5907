@@ -22,7 +22,7 @@ public class UsuarioDTO {
         this.correo = correo;
     }
 
-    public String contrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
