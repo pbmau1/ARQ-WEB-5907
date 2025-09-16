@@ -22,4 +22,19 @@ public class AhorroServiceImplement implements IAhorroService {
     public List<Ahorro> findAll() {
         return aR.findAll();
     }
+
+    @Override
+    public Ahorro listId(int id) {
+        return aR.findById(id).orElse(null);
+    }
+
+    @Override
+    public void update(Ahorro ahorro) {
+        aR.save(ahorro);
+    }
+
+    @Override
+    public void delete(int id) {
+        aR.deleteById(id);
+    }
 }
