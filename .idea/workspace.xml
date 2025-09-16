@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/OperacionDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/entities/Operacion.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/repositories/IOperacionRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/OperacionServiceImplement.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IOperacionService.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -29,6 +31,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -77,6 +80,7 @@
     "settings.editor.selected.configurable": "MavenSettings",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
+
   }
 }</component>
   <component name="RunManager">
@@ -106,9 +110,6 @@
       </set>
     </attachedChunks>
   </component>
-  <component name="StructureViewState">
-    <option name="selectedTab" value="Logical" />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="" />
@@ -119,13 +120,16 @@
       <workItem from="1757285722128" duration="6573000" />
       <workItem from="1757293881810" duration="7000" />
       <workItem from="1757293955099" duration="696000" />
+
       <workItem from="1757294659580" duration="8384000" />
+
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+
   <component name="Vcs.Log.Tabs.Properties">
     <option name="OPEN_GENERIC_TABS">
       <map>
@@ -170,4 +174,5 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+
 </project>
