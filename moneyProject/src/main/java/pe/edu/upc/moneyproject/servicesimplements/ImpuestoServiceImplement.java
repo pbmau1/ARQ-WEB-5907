@@ -1,0 +1,26 @@
+package pe.edu.upc.moneyproject.servicesimplements;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pe.edu.upc.moneyproject.entities.Impuesto;
+import pe.edu.upc.moneyproject.repositories.IImpuestoRepository;
+import pe.edu.upc.moneyproject.servicesinterfaces.IImpuestoService;
+
+import java.util.List;
+
+@Service
+public class ImpuestoServiceImplement implements IImpuestoService
+{
+
+   @Autowired
+      private IImpuestoRepository iR;
+
+    @Override
+    public Void Insert(Impuesto impuesto) {
+        return null;
+    }
+    @Override
+      public void insert(Impuesto impuesto) {iR.save(impuesto);}
+   @Override
+       public List<Impuesto> findAll() {return  iR.findAll();}
+}
