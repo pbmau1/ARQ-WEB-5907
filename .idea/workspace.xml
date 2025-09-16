@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/BalanceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/entities/Balance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/repositories/IBalanceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/BalanceServiceImplement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IBalanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +109,7 @@
       <workItem from="1757294659580" duration="8384000" />
       <workItem from="1757602529003" duration="2750000" />
       <workItem from="1757716384010" duration="3359000" />
-      <workItem from="1757990149301" duration="8370000" />
+      <workItem from="1757990149301" duration="8676000" />
     </task>
     <servers />
   </component>
