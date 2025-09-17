@@ -37,7 +37,11 @@ public class BalanceServiceImplement implements IBalanceService {
     @Override
     public void update(Balance balance) { BR.save(balance); }
 
+    @Override
+    public List<Balance> findBalancesByMes(String mes){return BR.findBalancesByMes(mes);}
 
+    @Override
+    public List<String[]> sumadetotalingr(){return BR.sumadetotalingr();}
 
 
 }
