@@ -13,4 +13,8 @@ public interface IBalanceService {
     public void delete(int id);
     public Balance listId(int id);
     public void update(Balance balance);
+    List<Balance> findBalancesByMes(String mes);
+    public List<String[]> sumadetotalingr();
+
+
 }
