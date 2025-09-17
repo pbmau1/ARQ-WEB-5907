@@ -23,4 +23,19 @@ public class OperacionServiceImplement implements IOperacionService {
     public List<Operacion> findAll() {
         return oR.findAll();
     }
+
+    @Override
+    public Operacion listId(int id) {
+        return oR.findById(id).orElse(null);
+    }
+
+    @Override
+    public void update(Operacion operacion) {
+        oR.save(operacion);
+    }
+
+    @Override
+    public void delete(int id) {
+        oR.deleteById(id);
+    }
 }
