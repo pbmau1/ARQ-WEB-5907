@@ -12,4 +12,5 @@ public interface IRecursoService {
     public Recurso listId(int id);
     public void update(Recurso recurso);
     public void delete(int id);
+    public List<Recurso> findRecursoByAutor(String autor);
 }

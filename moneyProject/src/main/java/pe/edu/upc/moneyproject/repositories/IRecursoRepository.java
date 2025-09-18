@@ -7,6 +7,7 @@ import pe.edu.upc.moneyproject.entities.Recurso;
 
 @Repository
 public interface IRecursoRepository extends JpaRepository<Recurso,Integer> {
+   public List<Recurso> findRecursoByAutor(String autor);
 
 }
 

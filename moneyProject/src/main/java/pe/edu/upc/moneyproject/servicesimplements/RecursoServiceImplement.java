@@ -32,4 +32,7 @@ public class RecursoServiceImplement implements IRecursoService {
     public void delete(int id){
         rR.deleteById(id);
     }
+
+     @Override
+    public List<Recurso> findRecursoByAutor(String autor){return rR.findRecursoByAutor(autor);}
 }
