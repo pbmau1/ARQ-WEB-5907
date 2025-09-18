@@ -38,4 +38,7 @@ public class OperacionServiceImplement implements IOperacionService {
     public void delete(int id) {
         oR.deleteById(id);
     }
+     @Override
+    public List<Operacion> findOperacionByCategoria(String Categoria){return oR.findOperacionByCategoria(Categoria);}
+
 }
