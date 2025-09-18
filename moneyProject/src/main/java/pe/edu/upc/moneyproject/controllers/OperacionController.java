@@ -60,4 +60,21 @@ public class OperacionController {
         oS.delete(id);
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
+
+    @GetMapping("/listarporcategoria") //siempre asignarle las rutas sin que se repitan los nombres
+    public ResponseEntity<?> listarporcategoria(@RequestParam String categoria) {
+        List<Operacion> operaciones = oS.findOperacionByCategoria(categoria);
+
+        if (operaciones.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron operaciones con esa categoria de : " + categoria);
+        }
+
+        List<OperacionDTO> listaDTO = operaciones.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, OperacionDTO.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
 }
