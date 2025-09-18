@@ -11,4 +11,5 @@ public interface IOperacionService {
     public Operacion listId(int id);
     public void update(Operacion operacion);
     public void delete(int id);
+    public List<Operacion> findOperacionByCategoria(String Categoria);
 }
