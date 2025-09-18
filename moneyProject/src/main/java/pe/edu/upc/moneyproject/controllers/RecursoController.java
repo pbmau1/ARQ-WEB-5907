@@ -60,4 +60,21 @@ public class RecursoController {
         rS.delete(id);
         return ResponseEntity.ok("Recurso con ID " + id + " eliminado correctamente.");
     }
+
+    @GetMapping("/listarpormes") //siempre asignarle las rutas sin que se repitan los nombres
+    public ResponseEntity<?> listarpormes(@RequestParam String mes) {
+        List<Balance> balances = BS.findBalancesByMes(mes);
+
+        if (balances.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron balances con el mes de : " + mes);
+        }
+
+        List<BalanceDTO> listaDTO = balances.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, BalanceDTO.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
 }
