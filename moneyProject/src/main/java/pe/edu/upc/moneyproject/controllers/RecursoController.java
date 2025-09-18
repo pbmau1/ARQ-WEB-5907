@@ -61,18 +61,18 @@ public class RecursoController {
         return ResponseEntity.ok("Recurso con ID " + id + " eliminado correctamente.");
     }
 
-    @GetMapping("/listarpormes") //siempre asignarle las rutas sin que se repitan los nombres
-    public ResponseEntity<?> listarpormes(@RequestParam String mes) {
-        List<Balance> balances = BS.findBalancesByMes(mes);
+    @GetMapping("/recursoporautor")
+    public ResponseEntity<?> listarporautor(@RequestParam String autor) {
+        List<Recurso> recursos = rS.findRecursoByAutor(autor);
 
-        if (balances.isEmpty()) {
+        if (recursos.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron balances con el mes de : " + mes);
+                    .body("No se encontraron recursos con el autor : " + autor);
         }
 
-        List<BalanceDTO> listaDTO = balances.stream().map(x -> {
+        List<RecursoDTO> listaDTO = recursos.stream().map(x -> {
             ModelMapper m = new ModelMapper();
-            return m.map(x, BalanceDTO.class);
+            return m.map(x, RecursoDTO.class);
         }).collect(Collectors.toList());
 
         return ResponseEntity.ok(listaDTO);
