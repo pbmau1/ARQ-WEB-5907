@@ -6,4 +6,5 @@ import pe.edu.upc.moneyproject.entities.Operacion;
 
 @Repository
 public interface IOperacionRepository extends JpaRepository<Operacion,Integer> {
+      public List<Operacion> findOperacionByCategoria(String Categoria);
 }
