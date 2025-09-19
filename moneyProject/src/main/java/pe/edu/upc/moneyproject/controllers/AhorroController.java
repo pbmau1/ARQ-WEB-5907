@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.entities.Ahorro;
-import pe.edu.upc.moneyproject.repositories.IAhorroRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IAhorroService;
 
 import java.util.List;
@@ -28,10 +27,11 @@ public class AhorroController {
     }
 
     @PostMapping
-    public void insert(@RequestBody AhorroDTO ahorroDTO){
+    public ResponseEntity<String> insert(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
         Ahorro ahorro = m.map(ahorroDTO,Ahorro.class);
         aS.insert(ahorro);
+        return ResponseEntity.ok("Se registro correctamente.");
     }
 
     @PutMapping
