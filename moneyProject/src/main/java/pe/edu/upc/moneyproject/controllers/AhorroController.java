@@ -27,10 +27,12 @@ public class AhorroController {
     }
 
     @PostMapping
-    public void insert(@RequestBody AhorroDTO ahorroDTO){
+    public ResponseEntity<String> insert(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
         Ahorro ahorro = m.map(ahorroDTO,Ahorro.class);
         aS.insert(ahorro);
+
+        return ResponseEntity.ok("Se registro correctamente.");
     }
 
     @PutMapping
