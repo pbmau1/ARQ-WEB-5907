@@ -43,11 +43,11 @@ public class AhorroController {
         Ahorro ahorroexiste = aS.listId(ah.getIdAhorro());
         if(ahorroexiste==null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se puede modificar. No existe un registro con el ID: " + ah.getIdAhorro());
+                    .body("No se puede modificar. No existe un ahorro con el ID: " + ah.getIdAhorro());
         }
 
         aS.update(ah);
-        return ResponseEntity.ok("Registro con ID " + ah.getIdAhorro() + " modificado correctamente.");
+        return ResponseEntity.ok("Ahorro con ID " + ah.getIdAhorro() + " modificado correctamente.");
     }
 
     @DeleteMapping("/{id}")
@@ -55,7 +55,7 @@ public class AhorroController {
         Ahorro ahorro = aS.listId(id);
         if(ahorro==null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No existe un recurso con el ID: " + id);
+                    .body("No existe un ahorro con el ID: " + id);
         }
         aS.delete(id);
         return ResponseEntity.ok("Ahorro con ID " + id + " eliminado correctamente.");
