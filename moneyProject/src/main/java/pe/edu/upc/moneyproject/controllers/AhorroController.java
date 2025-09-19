@@ -31,7 +31,6 @@ public class AhorroController {
         ModelMapper m = new ModelMapper();
         Ahorro ahorro = m.map(ahorroDTO,Ahorro.class);
         aS.insert(ahorro);
-
         return ResponseEntity.ok("Se registro correctamente.");
     }
 
