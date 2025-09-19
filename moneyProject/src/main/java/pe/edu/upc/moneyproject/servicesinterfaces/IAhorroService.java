@@ -7,4 +7,10 @@ import java.util.List;
 public interface IAhorroService {
     public void insert(Ahorro ahorro);
     public List<Ahorro> findAll();
+
+    void update(Ahorro ah);
+
+    Ahorro listId(int id);
+
+    void delete(int id);
 }
