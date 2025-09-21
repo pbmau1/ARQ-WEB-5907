@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
+import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,27 @@ public class UsuarioController {
             return m.map(x, UsuarioDTO.class);
 
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<?> MostrarUsuarios() {
+
+        List<UsuariosDTO>list =new ArrayList<>();
+        List<String[]>fila = US.findUsuarios();
+
+        if(fila.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existen usuarios registrados" );
+        }
+        for (String[] x : fila) {
+            UsuariosDTO dto = new UsuariosDTO();
+            dto.setIdUsuario(Integer.parseInt(x[0]));
+            dto.setNombre(x[1]);
+            dto.setCorreo(x[2]);
+            list.add(dto);
+        }
+
+        return ResponseEntity.ok().body(list);
     }
 
     @PostMapping

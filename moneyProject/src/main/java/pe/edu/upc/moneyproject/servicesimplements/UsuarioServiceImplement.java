@@ -32,4 +32,10 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public Usuario listId(int id) {
         return UR.findById(id).orElse(null);
     }
+
+    @Override
+    public List<String[]> findUsuarios() {
+        return UR.findUsuarios();
+    }
+
 }
