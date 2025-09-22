@@ -45,4 +45,7 @@ public class OperacionServiceImplement implements IOperacionService {
 
     @Override
     public List<Operacion> searchOp(LocalDate fecha) {return oR.buscar(fecha);}
+
+    @Override
+    public List<Object[]> sumaOperacionesPorUsuario() { return oR.sumaOperacionesPorUsuario(); }
 }
