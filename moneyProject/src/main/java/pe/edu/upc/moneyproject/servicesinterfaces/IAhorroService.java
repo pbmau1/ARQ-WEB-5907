@@ -18,4 +18,6 @@ public interface IAhorroService {
     void delete(int id);
 
     List<Ahorro> findByPeriodo(LocalDate start, LocalDate end);
+
+    List<String[]> AhorroTotal(@Param("idUsuario") Integer idUsuario);
 }
