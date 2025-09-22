@@ -44,4 +44,9 @@ public class AhorroServiceImplement implements IAhorroService {
     public List<Ahorro> findByPeriodo(LocalDate start, LocalDate end) {
         return aR.findByPeriodo(start,end);
     }
+
+    @Override
+    public List<String[]> AhorroTotal(Integer idUsuario) {
+        return aR.AhorroTotal(idUsuario);
+    }
 }

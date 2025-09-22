@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
+import pe.edu.upc.moneyproject.dtos.AhorroTotalDTO;
+import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
 import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.servicesinterfaces.IAhorroService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,5 +77,27 @@ public class AhorroController {
         }
 
         return ResponseEntity.ok(ahorros);
+    }
+
+    @GetMapping("/ahorrototal/{id}")
+    public ResponseEntity<?> AhorroTotal(@PathVariable("id") Integer id){
+
+        List<AhorroTotalDTO> listDTO = new ArrayList<>();
+        List<String[]> total = aS.AhorroTotal(id);
+
+        if(total.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("El usuario con ID " + id + " no tiene ahorros registrados.");
+        }
+
+        for (String[] x : total) {
+            AhorroTotalDTO dto = new AhorroTotalDTO();
+            dto.setIdUsuario(Integer.parseInt(x[0]));
+            dto.setMonto_total(Double.parseDouble(x[2]));
+            dto.setNombre(x[1]);
+            listDTO.add(dto);
+        }
+
+        return ResponseEntity.ok(listDTO);
     }
 }

@@ -16,4 +16,9 @@ public interface IAhorroRepository extends JpaRepository<Ahorro,Integer> {
     @Query("select a " +
             "from Ahorro a where a.fecha_inicio BETWEEN :start AND :end")
     List<Ahorro> findByPeriodo(@Param("start") LocalDate start, @Param("end") LocalDate end);
+
+    @Query("select a.usuario.idUsuario, a.usuario.nombre, sum(a.monto_actual)" +
+            "from Ahorro a " +
+            "where a.usuario.idUsuario = :idUsuario group by a.usuario.idUsuario, a.usuario.nombre")
+    List<String[]> AhorroTotal(@Param("idUsuario") Integer idUsuario);
 }
