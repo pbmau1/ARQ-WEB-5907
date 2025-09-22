@@ -2,7 +2,6 @@ package pe.edu.upc.moneyproject.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.entities.Balance;
 import pe.edu.upc.moneyproject.repositories.IBalanceRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IBalanceService;

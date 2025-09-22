@@ -4,7 +4,6 @@ import org.springframework.data.repository.query.Param;
 import pe.edu.upc.moneyproject.entities.Ahorro;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IAhorroService {

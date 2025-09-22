@@ -1,8 +1,5 @@
 package pe.edu.upc.moneyproject.servicesinterfaces;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import pe.edu.upc.moneyproject.dtos.BalanceDTO;
 import pe.edu.upc.moneyproject.entities.Balance;
 
 import java.util.List;

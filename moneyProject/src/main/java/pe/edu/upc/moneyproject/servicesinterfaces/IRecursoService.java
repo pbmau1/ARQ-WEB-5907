@@ -1,7 +1,6 @@
 package pe.edu.upc.moneyproject.servicesinterfaces;
 
 import pe.edu.upc.moneyproject.entities.Recurso;
-import pe.edu.upc.moneyproject.entities.Usuario;
 
 import java.util.List;
 
