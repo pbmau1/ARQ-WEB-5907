@@ -6,6 +6,8 @@ import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.repositories.IAhorroRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IAhorroService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -36,5 +38,10 @@ public class AhorroServiceImplement implements IAhorroService {
     @Override
     public void delete(int id) {
         aR.deleteById(id);
+    }
+
+    @Override
+    public List<Ahorro> findByPeriodo(LocalDate start, LocalDate end) {
+        return aR.findByPeriodo(start,end);
     }
 }
