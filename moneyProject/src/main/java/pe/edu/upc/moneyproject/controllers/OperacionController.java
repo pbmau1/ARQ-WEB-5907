@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.OperacionDTO;
+import pe.edu.upc.moneyproject.dtos.SumaOpPorUsDTO;
 import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.entities.Operacion;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -94,5 +96,27 @@ public class OperacionController {
         }).collect(Collectors.toList());
 
         return ResponseEntity.ok(listaDTO);
+    }
+
+    @GetMapping("/suma-por-usuario")
+    public ResponseEntity<?> sumaOperacionesPorUsuario() {
+
+        List<SumaOpPorUsDTO> listaDto = new ArrayList<>();
+        List<Object[]> filas = oS.sumaOperacionesPorUsuario();
+
+        if (filas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existen operaciones registradas");
+        }
+
+        for (Object[] x : filas) {
+            SumaOpPorUsDTO dto = new SumaOpPorUsDTO();
+            dto.setIdUsuario(((Number) x[0]).intValue());   // id_usuario
+            dto.setNombre((String) x[1]);                   // nombre
+            dto.setTotalOperaciones(((Number) x[2]).intValue()); // total_operaciones
+            listaDto.add(dto);
+        }
+
+        return ResponseEntity.ok(listaDto);
     }
 }

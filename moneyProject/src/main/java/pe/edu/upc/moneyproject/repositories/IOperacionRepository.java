@@ -15,4 +15,11 @@ public interface IOperacionRepository extends JpaRepository<Operacion,Integer> {
 
     @Query("Select o from Operacion o where o.fecha = :fecha")
     public List<Operacion> buscar(@Param("fecha") LocalDate fecha);
+
+    @Query(value = "SELECT u.id_usuario, u.nombre, SUM(o.monto_operacion) AS total_operaciones " +
+            "FROM operacion o " +
+            "INNER JOIN usuario u ON o.id_usuario = u.id_usuario " +
+            "GROUP BY u.id_usuario, u.nombre",
+            nativeQuery = true)
+    List<Object[]> sumaOperacionesPorUsuario();
 }

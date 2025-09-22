@@ -14,4 +14,5 @@ public interface IOperacionService {
     public void delete(int id);
     public List<Operacion> findOperacionByCategoria(String Categoria);
     public List<Operacion>searchOp(LocalDate fecha);
+    public List<Object[]> sumaOperacionesPorUsuario();
 }
