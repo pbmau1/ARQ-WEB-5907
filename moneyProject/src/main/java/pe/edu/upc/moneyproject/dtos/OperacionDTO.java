@@ -6,15 +6,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import pe.edu.upc.moneyproject.entities.Usuario;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class OperacionDTO {
     private int idOperacion;
     private String categoria;
-    private String monto;
+    private int monto;
     private String tipo;
     private String detalle;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
     private Usuario usuario;
 
     public int getIdOperacion() {
@@ -33,11 +32,11 @@ public class OperacionDTO {
         this.categoria = categoria;
     }
 
-    public String getMonto() {
+    public int getMonto() {
         return monto;
     }
 
-    public void setMonto(String monto) {
+    public void setMonto(int monto) {
         this.monto = monto;
     }
 
@@ -57,11 +56,11 @@ public class OperacionDTO {
         this.detalle = detalle;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
