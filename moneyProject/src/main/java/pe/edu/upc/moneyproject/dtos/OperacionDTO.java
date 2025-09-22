@@ -1,8 +1,5 @@
 package pe.edu.upc.moneyproject.dtos;
 
-
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 import pe.edu.upc.moneyproject.entities.Usuario;
 
 import java.time.LocalDate;
