@@ -7,6 +7,7 @@ import pe.edu.upc.moneyproject.repositories.IOperacionRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IAhorroService;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -38,7 +39,10 @@ public class OperacionServiceImplement implements IOperacionService {
     public void delete(int id) {
         oR.deleteById(id);
     }
-     @Override
+
+    @Override
     public List<Operacion> findOperacionByCategoria(String Categoria){return oR.findOperacionByCategoria(Categoria);}
 
+    @Override
+    public List<Operacion> searchOp(LocalDate fecha) {return oR.buscar(fecha);}
 }

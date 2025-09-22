@@ -11,6 +11,7 @@ import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.entities.Operacion;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +69,23 @@ public class OperacionController {
         if (operaciones.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se encontraron operaciones con esa categoria de : " + categoria);
+        }
+
+        List<OperacionDTO> listaDTO = operaciones.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, OperacionDTO.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
+
+    @GetMapping("/busquedafecha")
+    public ResponseEntity<?> buscar(@RequestParam LocalDate f) {
+        List<Operacion> operaciones = oS.searchOp(f);
+
+        if (operaciones.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron operaciones con la fecha de creación: " + f);
         }
 
         List<OperacionDTO> listaDTO = operaciones.stream().map(x -> {

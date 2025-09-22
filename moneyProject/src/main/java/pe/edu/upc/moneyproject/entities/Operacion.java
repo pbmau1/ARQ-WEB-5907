@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Operacion")
@@ -18,7 +17,7 @@ public class Operacion {
     private String categoria;
 
     @Column(name="montoOperacion",nullable = false)
-    private String monto;
+    private int monto;
 
     @Column(name="tipoOperacion",nullable = false)
     private String tipo;
@@ -28,19 +27,19 @@ public class Operacion {
 
     @CreationTimestamp
     @Column(name="fechaOperacion", nullable = false, updatable = false)
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     @ManyToOne
     @JoinColumn(name="idUsuario")
     private Usuario usuario;
 
-    public Operacion(int idOperacion, String categoria, String monto, String tipo, String detalle, LocalDate fecha, Usuario usuario) {
+    public Operacion(int idOperacion, String categoria, int monto, String tipo, String detalle, LocalDate fecha, Usuario usuario) {
         this.idOperacion = idOperacion;
         this.categoria = categoria;
         this.monto = monto;
         this.tipo = tipo;
         this.detalle = detalle;
-        this.fecha = LocalDateTime.now();
+        this.fecha = LocalDate.now();
         this.usuario = usuario;
     }
 
@@ -64,11 +63,11 @@ public class Operacion {
         this.categoria = categoria;
     }
 
-    public String getMonto() {
+    public int getMonto() {
         return monto;
     }
 
-    public void setMonto(String monto) {
+    public void setMonto(int monto) {
         this.monto = monto;
     }
 
@@ -88,11 +87,11 @@ public class Operacion {
         this.detalle = detalle;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
