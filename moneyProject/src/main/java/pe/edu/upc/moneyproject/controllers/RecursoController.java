@@ -10,6 +10,7 @@ import pe.edu.upc.moneyproject.entities.Recurso;
 import pe.edu.upc.moneyproject.repositories.IRecursoRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,6 +72,22 @@ public class RecursoController {
         }
 
         List<RecursoDTO> listaDTO = recursos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, RecursoDTO.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
+    @GetMapping("/recursoporfecha")
+    public ResponseEntity<?> listarporfecga(@RequestParam LocalDate fecha) {
+        List<Recurso> recursoxfecha = rS.findRecursoByFecha(fecha);
+
+        if (recursoxfecha.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron recursos en la fecha : " + recursoxfecha);
+        }
+
+        List<RecursoDTO> listaDTO = recursoxfecha.stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, RecursoDTO.class);
         }).collect(Collectors.toList());

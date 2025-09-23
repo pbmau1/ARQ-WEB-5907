@@ -7,6 +7,7 @@ import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.repositories.IRecursoRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -35,4 +36,9 @@ public class RecursoServiceImplement implements IRecursoService {
 
      @Override
     public List<Recurso> findRecursoByAutor(String autor){return rR.findRecursoByAutor(autor);}
+
+    @Override
+    public List<Recurso> findRecursoByFecha(LocalDate fecha) {
+        return rR.obtenerRecursoPorDia(fecha);
+    }
 }
