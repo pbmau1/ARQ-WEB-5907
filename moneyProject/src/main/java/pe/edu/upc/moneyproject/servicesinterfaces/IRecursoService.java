@@ -2,6 +2,7 @@ package pe.edu.upc.moneyproject.servicesinterfaces;
 
 import pe.edu.upc.moneyproject.entities.Recurso;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -12,4 +13,5 @@ public interface IRecursoService {
     public void update(Recurso recurso);
     public void delete(int id);
     public List<Recurso> findRecursoByAutor(String autor);
+    public List<Recurso> findRecursoByFecha(LocalDate fecha);
 }
