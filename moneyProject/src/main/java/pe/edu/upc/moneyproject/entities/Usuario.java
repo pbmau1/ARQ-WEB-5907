@@ -2,6 +2,8 @@ package pe.edu.upc.moneyproject.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -19,11 +21,24 @@ public class Usuario {
     @Column(name = "contrasenia", length = 50, nullable = false)
     private String contrasenia;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario")
+    private List<Role> roles;
+
+
     public Usuario(int idUsuario, String nombre, String correo, String contrasenia) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.correo = correo;
         this.contrasenia = contrasenia;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public Usuario() {
