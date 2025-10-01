@@ -18,7 +18,7 @@ public class Usuario {
     @Column(name = "correo", length = 100, nullable = false)
     private String correo;
 
-    @Column(name = "contrasenia", length = 50, nullable = false)
+    @Column(name = "contrasenia", length = 100, nullable = false)
     private String contrasenia;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
