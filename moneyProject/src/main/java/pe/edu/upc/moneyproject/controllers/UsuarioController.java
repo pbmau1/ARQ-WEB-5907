@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
@@ -24,6 +25,7 @@ public class UsuarioController {
     private IUsuarioService US;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -59,7 +61,9 @@ public class UsuarioController {
         Usuario u = m.map(dto, Usuario.class);
         US.insert(u);
     }
+
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
@@ -71,6 +75,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
