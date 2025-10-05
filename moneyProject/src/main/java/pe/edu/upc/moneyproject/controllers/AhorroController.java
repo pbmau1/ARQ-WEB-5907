@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/ahorros")
+@RequestMapping("/ahorro")
 public class AhorroController {
     @Autowired
     private IAhorroService aS;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<AhorroDTO> findAll(){
         return aS.findAll().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -31,7 +31,7 @@ public class AhorroController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<String> insert(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
         Ahorro ahorro = m.map(ahorroDTO,Ahorro.class);
@@ -39,7 +39,7 @@ public class AhorroController {
         return ResponseEntity.ok("Se registro correctamente.");
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
         Ahorro ah = m.map(ahorroDTO,Ahorro.class);
@@ -54,7 +54,7 @@ public class AhorroController {
         return ResponseEntity.ok("Ahorro con ID " + ah.getIdAhorro() + " modificado correctamente.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Ahorro ahorro = aS.listId(id);
         if(ahorro==null){

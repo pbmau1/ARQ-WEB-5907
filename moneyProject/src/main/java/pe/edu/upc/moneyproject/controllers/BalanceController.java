@@ -26,7 +26,7 @@ public class BalanceController {
     @Autowired
     private StringHttpMessageConverter stringHttpMessageConverter;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<BalanceDTO> findAll(){
         return BS.findAll().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -34,14 +34,14 @@ public class BalanceController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insert(@RequestBody BalanceDTO balanceDTO){
         ModelMapper m = new ModelMapper();
         Balance balance = m.map(balanceDTO, Balance.class);
         BS.insert(balance);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Balance balance = BS.listId(id);
         if (balance == null) {
@@ -52,7 +52,7 @@ public class BalanceController {
         return ResponseEntity.ok("Registro con ID " + id + " eliminado correctamente.");
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody BalanceDTO dto) {
         ModelMapper m = new ModelMapper();
         Balance br = m.map(dto, Balance.class);

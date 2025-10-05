@@ -16,10 +16,12 @@ public class ImpuestoServiceImplement implements IImpuestoService
    @Autowired
       private IImpuestoRepository iR;
 
+
     @Override
     public Void Insert(Impuesto impuesto) {
         return null;
     }
+
     @Override
       public void insert(Impuesto impuesto) {iR.save(impuesto);}
    @Override
@@ -27,7 +29,7 @@ public class ImpuestoServiceImplement implements IImpuestoService
 
     @Override
     public Impuesto listId(int idImpuesto) {
-        return null;
+        return iR.findById(idImpuesto).orElse(null);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ImpuestoServiceImplement implements IImpuestoService
 
     @Override
     public void delete(Integer id) {
-
+        iR.deleteById(id);
     }
     @Autowired
     private IImpuestoRepository repo;

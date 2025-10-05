@@ -1,12 +1,13 @@
 # ARQ-WEB-5907
 
-App
+Arquitectura Web-Money Mentor
 
 Orlando Gabriel Soto Ccopa  
-Lucarelly Sanchez  
-Angie 
 
-**_Mau_**
+Stefano Lucarelly Sanchez Heredia
 
+Angie Sthefania Rosa Apaza Macotela
 
-Omar
+Mauricio Suwells Antonio Ascue
+
+Omar Alessandro Collahua Huaranga

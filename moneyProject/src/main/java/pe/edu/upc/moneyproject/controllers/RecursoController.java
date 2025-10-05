@@ -21,7 +21,7 @@ public class RecursoController {
     @Autowired
     private IRecursoService rS;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<RecursoDTO> findAll() {
         return rS.findAll().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -29,14 +29,14 @@ public class RecursoController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insert(@RequestBody RecursoDTO recursoDTO) {
         ModelMapper m= new ModelMapper();
         Recurso recurso= m.map(recursoDTO, Recurso.class);
         rS.insert(recurso);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoDTO dto) {
         ModelMapper m = new ModelMapper();
         Recurso re = m.map(dto, Recurso.class);
@@ -51,7 +51,7 @@ public class RecursoController {
         return ResponseEntity.ok("Registro con ID " + re.getIdRecurso() + " modificado correctamente.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);
         if (recurso == null) {

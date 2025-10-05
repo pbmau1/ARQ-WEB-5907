@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
@@ -24,8 +23,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -34,7 +32,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/users")
+    @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
         List<UsuariosDTO>list =new ArrayList<>();
@@ -55,15 +53,13 @@ public class UsuarioController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
         US.insert(u);
     }
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
@@ -74,8 +70,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
