@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/operaciones")
+@RequestMapping("/operacion")
 public class OperacionController {
     @Autowired
     private IOperacionService oS;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<OperacionDTO> findAll(){
         return oS.findAll().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -31,14 +31,14 @@ public class OperacionController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insert(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
         Operacion operacion = m.map(operacionDTO,Operacion.class);
         oS.insert(operacion);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
         Operacion op = m.map(operacionDTO,Operacion.class);
@@ -53,7 +53,7 @@ public class OperacionController {
         return ResponseEntity.ok("Registro con ID " + op.getIdOperacion() + " modificado correctamente.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Operacion operacion = oS.listId(id);
         if(operacion==null){
