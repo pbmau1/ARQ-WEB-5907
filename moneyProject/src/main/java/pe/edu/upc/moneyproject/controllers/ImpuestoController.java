@@ -21,7 +21,7 @@ public class ImpuestoController {
     @Autowired
     private IImpuestoService iS;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<ImpuestoDTO> findAll() {
         return iS.findAll().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -29,7 +29,7 @@ public class ImpuestoController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insert(@RequestBody ImpuestoDTO impuestoDTO) {
         ModelMapper m = new ModelMapper();
         Impuesto impuesto = m.map(impuestoDTO, Impuesto.class);
@@ -37,7 +37,7 @@ public class ImpuestoController {
     }
 
     //  PUT - modificar un impuesto
-    @PutMapping
+    @PutMapping("/update")
         public ResponseEntity<String> modificar(@RequestBody ImpuestoDTO impuestoDTO){
             ModelMapper m = new ModelMapper();
             Impuesto impuesto = m.map(impuestoDTO, Impuesto.class);
@@ -53,7 +53,7 @@ public class ImpuestoController {
         }
 
         //  DELETE - eliminar un impuesto
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/delete/{id}")
         public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
             Impuesto impuesto = iS.listId(id);
             if(impuesto == null){

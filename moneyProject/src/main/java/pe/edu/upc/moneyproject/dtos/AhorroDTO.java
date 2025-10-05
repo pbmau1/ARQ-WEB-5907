@@ -11,13 +11,15 @@ public class AhorroDTO {
     private LocalDate fecha_limite;
     private Usuario usuario;
 
-    public int getId() {
+
+    public int getIdAhorro() {
         return idAhorro;
     }
 
-    public void setId(int id) {
-        this.idAhorro = id;
+    public void setIdAhorro(int idAhorro) {
+        this.idAhorro = idAhorro;
     }
+
 
     public String getObjetivo() {
         return objetivo;

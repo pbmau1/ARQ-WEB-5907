@@ -23,7 +23,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -32,7 +32,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/users")
+    @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
         List<UsuariosDTO>list =new ArrayList<>();
@@ -53,13 +53,13 @@ public class UsuarioController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
         US.insert(u);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
@@ -70,7 +70,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
         if (usuario == null) {
