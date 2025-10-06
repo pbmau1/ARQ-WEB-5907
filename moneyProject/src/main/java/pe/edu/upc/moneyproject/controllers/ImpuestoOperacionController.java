@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.ImpuestoOperacionDTO;
 import pe.edu.upc.moneyproject.entities.ImpuestoOperacion;
@@ -18,6 +19,7 @@ public class ImpuestoOperacionController {
     @Autowired
     private IImpuestoOperacionService ioS;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public List<ImpuestoOperacionDTO> findAll(){
         return ioS.findAll().stream().map(x->{
@@ -26,6 +28,7 @@ public class ImpuestoOperacionController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public void insert(@RequestBody ImpuestoOperacionDTO impuestoOperacionDTO){
         ModelMapper m = new ModelMapper();
@@ -33,6 +36,7 @@ public class ImpuestoOperacionController {
         ioS.insert(impuestoOperacion);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public ResponseEntity<String> modificar(@RequestBody ImpuestoOperacionDTO impuestoOperacionDTO){
         ModelMapper m = new ModelMapper();
@@ -48,6 +52,7 @@ public class ImpuestoOperacionController {
         return ResponseEntity.ok("Registro con ID " + io.getIdImpuestoOperacion() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         ImpuestoOperacion impuestoOperacionexiste = ioS.listId(id);
