@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.BalanceDTO;
 import pe.edu.upc.moneyproject.dtos.ImpuestoDTO;
@@ -21,6 +22,7 @@ public class ImpuestoController {
     @Autowired
     private IImpuestoService iS;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/listar")
     public List<ImpuestoDTO> findAll() {
         return iS.findAll().stream().map(x -> {
@@ -29,6 +31,7 @@ public class ImpuestoController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody ImpuestoDTO impuestoDTO) {
         ModelMapper m = new ModelMapper();
@@ -37,6 +40,7 @@ public class ImpuestoController {
     }
 
     //  PUT - modificar un impuesto
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
         public ResponseEntity<String> modificar(@RequestBody ImpuestoDTO impuestoDTO){
             ModelMapper m = new ModelMapper();
@@ -53,6 +57,7 @@ public class ImpuestoController {
         }
 
         //  DELETE - eliminar un impuesto
+        @PreAuthorize("hasRole('ADMIN')")
         @DeleteMapping("/delete/{id}")
         public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
             Impuesto impuesto = iS.listId(id);

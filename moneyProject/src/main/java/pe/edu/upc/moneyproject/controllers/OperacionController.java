@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.OperacionDTO;
@@ -23,6 +24,7 @@ public class OperacionController {
     @Autowired
     private IOperacionService oS;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listar")
     public List<OperacionDTO> findAll(){
         return oS.findAll().stream().map(x->{
@@ -31,6 +33,7 @@ public class OperacionController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("/register")
     public void insert(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -38,6 +41,7 @@ public class OperacionController {
         oS.insert(operacion);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -53,6 +57,7 @@ public class OperacionController {
         return ResponseEntity.ok("Registro con ID " + op.getIdOperacion() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Operacion operacion = oS.listId(id);
@@ -64,6 +69,7 @@ public class OperacionController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listarporcategoria") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> listarporcategoria(@RequestParam String categoria) {
         List<Operacion> operaciones = oS.findOperacionByCategoria(categoria);

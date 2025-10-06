@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.BalanceDTO;
@@ -34,6 +35,7 @@ public class BalanceController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("/register")
     public void insert(@RequestBody BalanceDTO balanceDTO){
         ModelMapper m = new ModelMapper();
@@ -41,6 +43,7 @@ public class BalanceController {
         BS.insert(balance);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Balance balance = BS.listId(id);
@@ -52,6 +55,7 @@ public class BalanceController {
         return ResponseEntity.ok("Registro con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody BalanceDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -67,6 +71,7 @@ public class BalanceController {
         return ResponseEntity.ok("Registro con ID " + br.getIdBalance() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listarpormes") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> listarpormes(@RequestParam String mes) {
         List<Balance> balances = BS.findBalancesByMes(mes);
@@ -84,6 +89,7 @@ public class BalanceController {
         return ResponseEntity.ok(listaDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/sumadores") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> sumadetotalingr() {
         List<sumatotalingresosBalanceDTO>listaDto=new ArrayList<sumatotalingresosBalanceDTO>();

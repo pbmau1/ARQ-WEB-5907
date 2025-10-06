@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.AhorroTotalDTO;
@@ -23,6 +24,7 @@ public class AhorroController {
     @Autowired
     private IAhorroService aS;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listar")
     public List<AhorroDTO> findAll(){
         return aS.findAll().stream().map(x->{
@@ -31,6 +33,7 @@ public class AhorroController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public ResponseEntity<String> insert(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
@@ -39,6 +42,7 @@ public class AhorroController {
         return ResponseEntity.ok("Se registro correctamente.");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
@@ -54,6 +58,7 @@ public class AhorroController {
         return ResponseEntity.ok("Ahorro con ID " + ah.getIdAhorro() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Ahorro ahorro = aS.listId(id);
@@ -65,7 +70,7 @@ public class AhorroController {
         return ResponseEntity.ok("Ahorro con ID " + id + " eliminado correctamente.");
     }
 
-
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/periodo")
     public ResponseEntity<?> findByPeriodo(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end){
@@ -79,6 +84,7 @@ public class AhorroController {
         return ResponseEntity.ok(ahorros);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/ahorrototal/{id}")
     public ResponseEntity<?> AhorroTotal(@PathVariable("id") Integer id){
 

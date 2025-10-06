@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
+    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="rutas de acceso">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoOperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoOperacionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/AhorroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/AhorroDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/ImpuestoServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/ImpuestoServiceImplement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +43,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:pbmau1/ARQ-WEB-5907.git&quot;,
-    &quot;accountId&quot;: &quot;34ea1786-4fb8-4a30-bf1f-2c088808a97d&quot;
+    &quot;url&quot;: &quot;git@github.com:/pbmau1/ARQ-WEB-5907.git&quot;,
+    &quot;accountId&quot;: &quot;fb6c5710-05cc-4d73-a5b4-37be78d97fc6&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -56,31 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MoneyProjectApplication.executor": "Run",
-    "git-widget-placeholder": "Mauricio",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MoneyProjectApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Mauricio&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MoneyProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -111,6 +110,8 @@
       <updated>1758523452679</updated>
       <workItem from="1758523453808" duration="7515000" />
       <workItem from="1759196468277" duration="1442000" />
+      <workItem from="1759710832131" duration="3638000" />
+      <workItem from="1759718766827" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
       <option name="closed" value="true" />
@@ -120,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758531155992</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="rutas de acceso">
+      <option name="closed" value="true" />
+      <created>1759703170047</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759703170047</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +137,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
+    <MESSAGE value="rutas de acceso" />
+    <option name="LAST_COMMIT_MESSAGE" value="rutas de acceso" />
   </component>
 </project>
