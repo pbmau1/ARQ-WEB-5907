@@ -24,7 +24,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
@@ -56,7 +56,7 @@ public class UsuarioController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -64,7 +64,7 @@ public class UsuarioController {
         US.insert(u);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
@@ -76,7 +76,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);

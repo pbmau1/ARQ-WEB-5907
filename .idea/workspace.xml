@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="rutas de acceso">
+    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="role security">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoOperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoOperacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
       <workItem from="1758523453808" duration="7515000" />
       <workItem from="1759196468277" duration="1442000" />
       <workItem from="1759710832131" duration="3638000" />
-      <workItem from="1759718766827" duration="3233000" />
+      <workItem from="1759718766827" duration="5148000" />
     </task>
     <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
       <option name="closed" value="true" />
@@ -129,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759703170047</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="role security">
+      <option name="closed" value="true" />
+      <created>1759722039550</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759722039550</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
     <MESSAGE value="rutas de acceso" />
-    <option name="LAST_COMMIT_MESSAGE" value="rutas de acceso" />
+    <MESSAGE value="role security" />
+    <option name="LAST_COMMIT_MESSAGE" value="role security" />
   </component>
 </project>
