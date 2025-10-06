@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
@@ -23,6 +24,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
@@ -32,6 +34,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -53,12 +56,15 @@ public class UsuarioController {
         return ResponseEntity.ok().body(list);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
         US.insert(u);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
@@ -70,6 +76,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);

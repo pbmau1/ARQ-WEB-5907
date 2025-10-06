@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.RecursoDTO;
 import pe.edu.upc.moneyproject.entities.Recurso;
@@ -21,6 +22,7 @@ public class RecursoController {
     @Autowired
     private IRecursoService rS;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/listar")
     public List<RecursoDTO> findAll() {
         return rS.findAll().stream().map(x->{
@@ -29,6 +31,7 @@ public class RecursoController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody RecursoDTO recursoDTO) {
         ModelMapper m= new ModelMapper();
@@ -36,6 +39,7 @@ public class RecursoController {
         rS.insert(recurso);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -51,6 +55,7 @@ public class RecursoController {
         return ResponseEntity.ok("Registro con ID " + re.getIdRecurso() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);
@@ -62,6 +67,7 @@ public class RecursoController {
         return ResponseEntity.ok("Recurso con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/recursoporautor")
     public ResponseEntity<?> listarporautor(@RequestParam String autor) {
         List<Recurso> recursos = rS.findRecursoByAutor(autor);
@@ -78,6 +84,8 @@ public class RecursoController {
 
         return ResponseEntity.ok(listaDTO);
     }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/recursoporfecha")
     public ResponseEntity<?> listarporfecga(@RequestParam LocalDate fecha) {
         List<Recurso> recursoxfecha = rS.findRecursoByFecha(fecha);
