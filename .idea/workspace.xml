@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="docker">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/Dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="docker" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +75,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USUARIO\Desktop\UPC 2025-2\ARQ DE APP WEB\carajo" />
       <recent name="C:\Users\USUARIO\Desktop\UPC 2025-2\ARQ DE APP WEB\carajo\moneyProject" />
     </key>
   </component>
@@ -136,7 +133,7 @@
       <workItem from="1759196468277" duration="1442000" />
       <workItem from="1759710832131" duration="3638000" />
       <workItem from="1759718766827" duration="5148000" />
-      <workItem from="1759726991944" duration="572000" />
+      <workItem from="1759726991944" duration="886000" />
     </task>
     <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
       <option name="closed" value="true" />
@@ -178,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759726480483</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="docker">
+      <option name="closed" value="true" />
+      <created>1759727586587</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759727586587</updated>
+    </task>
+    <task id="LOCAL-00007" summary="docker">
+      <option name="closed" value="true" />
+      <created>1759727804286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759727804286</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
