@@ -1,6 +1,6 @@
 FROM maven:3.9.11-eclipse-temurin-24 AS builder
 WORKDIR /app
-COPY . .
+COPY MoneyProject/ .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:24-jdk-slim
