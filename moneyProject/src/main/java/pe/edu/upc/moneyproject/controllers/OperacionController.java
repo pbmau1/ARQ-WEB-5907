@@ -24,7 +24,7 @@ public class OperacionController {
     @Autowired
     private IOperacionService oS;
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar")
     public List<OperacionDTO> findAll(){
         return oS.findAll().stream().map(x->{
@@ -33,7 +33,7 @@ public class OperacionController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PostMapping("/register")
     public void insert(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -41,7 +41,7 @@ public class OperacionController {
         oS.insert(operacion);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -57,7 +57,7 @@ public class OperacionController {
         return ResponseEntity.ok("Registro con ID " + op.getIdOperacion() + " modificado correctamente.");
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Operacion operacion = oS.listId(id);
@@ -69,7 +69,7 @@ public class OperacionController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listarporcategoria") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> listarporcategoria(@RequestParam String categoria) {
         List<Operacion> operaciones = oS.findOperacionByCategoria(categoria);
@@ -87,6 +87,7 @@ public class OperacionController {
         return ResponseEntity.ok(listaDTO);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/busquedafecha")
     public ResponseEntity<?> buscar(@RequestParam LocalDate f) {
         List<Operacion> operaciones = oS.searchOp(f);
@@ -104,6 +105,7 @@ public class OperacionController {
         return ResponseEntity.ok(listaDTO);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/suma-por-usuario")
     public ResponseEntity<?> sumaOperacionesPorUsuario() {
 
