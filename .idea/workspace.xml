@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="docker" />
+    <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,16 +13,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Mauricio" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,51 +35,47 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:/pbmau1/ARQ-WEB-5907.git&quot;,
-    &quot;accountId&quot;: &quot;fb6c5710-05cc-4d73-a5b4-37be78d97fc6&quot;
+    &quot;url&quot;: &quot;https://github.com/pbmau1/ARQ-WEB-5907.git&quot;,
+    &quot;accountId&quot;: &quot;057ee194-f908-43a7-8912-48a15a5246f2&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="332mHMU2xUdk64uBBcb0K5buClD" />
+  <component name="ProjectId" id="32OJWzT96e9kqwwa0w4EkwJRd6a" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.moneyProject/Dockerfile builder.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.MoneyProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.MoneyProjectApplication.executor": "Run",
+    "git-widget-placeholder": "orlando",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Angie/IdeaProjects/ARQ-WEB-5907",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\USUARIO\Desktop\UPC 2025-2\ARQ DE APP WEB\carajo" />
-      <recent name="C:\Users\USUARIO\Desktop\UPC 2025-2\ARQ DE APP WEB\carajo\moneyProject" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Docker.moneyProject/Dockerfile builder">
+}]]></component>
+  <component name="RunManager">
     <configuration name="MoneyProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="moneyProject" />
@@ -88,28 +84,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="moneyProject/Dockerfile builder" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="imageTag" value="maven3.9.11-eclipse-temurin-24_builder" />
-          <option name="buildCliOptions" value="--target builder" />
-          <option name="sourceFilePath" value="moneyProject/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.moneyProject/Dockerfile builder" />
-        <item itemvalue="Docker.moneyProject/Dockerfile builder" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -124,84 +98,67 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="" />
-      <created>1758523452679</created>
+      <changelist id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="" />
+      <created>1757285720354</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758523452679</updated>
-      <workItem from="1758523453808" duration="7515000" />
-      <workItem from="1759196468277" duration="1442000" />
-      <workItem from="1759710832131" duration="3638000" />
-      <workItem from="1759718766827" duration="5148000" />
-      <workItem from="1759726991944" duration="886000" />
+      <updated>1757285720354</updated>
+      <workItem from="1757285722128" duration="6573000" />
+      <workItem from="1757293881810" duration="7000" />
+      <workItem from="1757293955099" duration="696000" />
+      <workItem from="1757294659580" duration="8384000" />
+      <workItem from="1757602529003" duration="2750000" />
+      <workItem from="1757716384010" duration="3359000" />
+      <workItem from="1757990149301" duration="10037000" />
+      <workItem from="1758039550046" duration="962000" />
+      <workItem from="1758058991048" duration="2079000" />
+      <workItem from="1758143609489" duration="5249000" />
+      <workItem from="1758207438760" duration="2357000" />
+      <workItem from="1758586525961" duration="241000" />
+      <workItem from="1759092388059" duration="3020000" />
+      <workItem from="1759194365350" duration="236000" />
+      <workItem from="1759195635000" duration="1324000" />
+      <workItem from="1759344730660" duration="7722000" />
+      <workItem from="1759418087971" duration="8000" />
+      <workItem from="1759589964231" duration="3345000" />
+      <workItem from="1759610427563" duration="2530000" />
     </task>
-    <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
-      <option name="closed" value="true" />
-      <created>1758531155992</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1758531155992</updated>
-    </task>
-    <task id="LOCAL-00002" summary="rutas de acceso">
-      <option name="closed" value="true" />
-      <created>1759703170047</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1759703170047</updated>
-    </task>
-    <task id="LOCAL-00003" summary="role security">
-      <option name="closed" value="true" />
-      <created>1759722039550</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1759722039550</updated>
-    </task>
-    <task id="LOCAL-00004" summary="docker">
-      <option name="closed" value="true" />
-      <created>1759726167366</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1759726167367</updated>
-    </task>
-    <task id="LOCAL-00005" summary="docker">
-      <option name="closed" value="true" />
-      <created>1759726480483</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1759726480483</updated>
-    </task>
-    <task id="LOCAL-00006" summary="docker">
-      <option name="closed" value="true" />
-      <created>1759727586587</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1759727586587</updated>
-    </task>
-    <task id="LOCAL-00007" summary="docker">
-      <option name="closed" value="true" />
-      <created>1759727804286</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1759727804286</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
-    <MESSAGE value="rutas de acceso" />
-    <MESSAGE value="role security" />
-    <MESSAGE value="docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="docker" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="0fe54b47-be56-41ec-91e4-2d7e227d0595" value="TOOL_WINDOW" />
+        <entry key="e36833b0-b900-4182-8ec7-3e4be7662d8f" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="0fe54b47-be56-41ec-91e4-2d7e227d0595">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="e36833b0-b900-4182-8ec7-3e4be7662d8f">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
