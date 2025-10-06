@@ -1,5 +1,6 @@
 package pe.edu.upc.moneyproject.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.moneyproject.entities.Usuario;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ public class AhorroDTO {
     private double monto_actual;
     private LocalDate fecha_inicio;
     private LocalDate fecha_limite;
+    @JsonIgnoreProperties({"roles"})
     private Usuario usuario;
 
 

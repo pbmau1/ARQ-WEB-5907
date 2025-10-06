@@ -1,5 +1,6 @@
 package pe.edu.upc.moneyproject.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import pe.edu.upc.moneyproject.entities.Usuario;
 
@@ -11,6 +12,7 @@ public class BalanceDTO {
     private double total_ingreso;
     private double total_ahorro;
     private double balance;
+    @JsonIgnoreProperties({"roles"})
     private Usuario usuario;
 
     public int getIdBalance() {
