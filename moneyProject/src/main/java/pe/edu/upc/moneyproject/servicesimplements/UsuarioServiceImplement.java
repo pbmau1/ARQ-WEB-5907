@@ -35,6 +35,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
+    public void update(Usuario usuario) {
+        UR.save(usuario);
+    }
+
+    @Override
     public Usuario listId(int id) {
         return UR.findById(id).orElse(null);
     }

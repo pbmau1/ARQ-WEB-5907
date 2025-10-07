@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.moneyproject.entities.Balance;
+import pe.edu.upc.moneyproject.entities.Usuario;
 
 import java.util.List;
 
