@@ -16,7 +16,9 @@ public interface IOperacionRepository extends JpaRepository<Operacion,Integer> {
     @Query("Select o from Operacion o where o.fecha = :fecha")
     public List<Operacion> buscar(@Param("fecha") LocalDate fecha);
 
-    @Query(value = "SELECT u.id_usuario, u.nombre, SUM(o.monto_operacion) AS total_operaciones " +
+    @Query(value = "SELECT u.id_usuario, u.nombre, " +
+            "SUM(CASE WHEN o.tipo_operacion = 'Ingreso' THEN o.monto_operacion ELSE 0 END) AS total_ingresos, " +
+            "SUM(CASE WHEN o.tipo_operacion = 'Gasto' THEN o.monto_operacion ELSE 0 END) AS total_gastos " +
             "FROM operacion o " +
             "INNER JOIN usuario u ON o.id_usuario = u.id_usuario " +
             "GROUP BY u.id_usuario, u.nombre",

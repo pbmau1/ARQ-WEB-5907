@@ -6,10 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.OperacionDTO;
 import pe.edu.upc.moneyproject.dtos.SumaOpPorUsDTO;
-import pe.edu.upc.moneyproject.entities.Ahorro;
 import pe.edu.upc.moneyproject.entities.Operacion;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
@@ -119,9 +117,10 @@ public class OperacionController {
 
         for (Object[] x : filas) {
             SumaOpPorUsDTO dto = new SumaOpPorUsDTO();
-            dto.setIdUsuario(((Number) x[0]).intValue());   // id_usuario
-            dto.setNombre((String) x[1]);                   // nombre
-            dto.setTotalOperaciones(((Number) x[2]).intValue()); // total_operaciones
+            dto.setIdUsuario(((Number) x[0]).intValue());        // id_usuario
+            dto.setNombre((String) x[1]);                        // nombre
+            dto.setTotalIngresos(((Number) x[2]).doubleValue()); // total_ingresos
+            dto.setTotalGastos(((Number) x[3]).doubleValue());   // total_gastos
             listaDto.add(dto);
         }
 
