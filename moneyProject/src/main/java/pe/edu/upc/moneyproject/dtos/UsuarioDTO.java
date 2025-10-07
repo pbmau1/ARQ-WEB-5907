@@ -1,10 +1,13 @@
 package pe.edu.upc.moneyproject.dtos;
 
+import java.util.List;
+
 public class UsuarioDTO {
     private int idUsuario;
     private String nombre;
     private String correo;
     private String contrasenia;
+    private List<RoleDTO> roles;// 👈 nueva lista
 
     public int getIdUsuario() {
         return idUsuario;
@@ -12,6 +15,14 @@ public class UsuarioDTO {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCorreo() {
@@ -30,11 +41,11 @@ public class UsuarioDTO {
         this.contrasenia = contrasenia;
     }
 
-    public String getNombre() {
-        return nombre;
+    public List<RoleDTO> getRoles() {
+        return roles;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setRoles(List<RoleDTO> roles) {
+        this.roles = roles;
     }
 }

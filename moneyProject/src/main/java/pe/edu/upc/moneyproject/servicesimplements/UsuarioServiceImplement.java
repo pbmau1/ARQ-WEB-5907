@@ -1,6 +1,7 @@
 package pe.edu.upc.moneyproject.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.repositories.IUsuarioRepository;
@@ -13,6 +14,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Autowired //sirve para inyectar dependencias
     private IUsuarioRepository UR;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder; // Inyectamos el encoder
+
     @Override
     public List<Usuario> list() {
         return UR.findAll();
@@ -20,6 +24,8 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void insert(Usuario usuario) {
+        // Encriptamos la contraseña antes de guardar
+        usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
         UR.save(usuario);
     }
 
