@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import pe.edu.upc.moneyproject.dtos.OperacionDTO;
+import pe.edu.upc.moneyproject.dtos.Query1;
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
 import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
 import pe.edu.upc.moneyproject.entities.Usuario;
@@ -34,7 +36,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -60,11 +62,25 @@ public class UsuarioController {
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
-        // 🔹 Asociar los roles al usuario antes de guardar (por seguridad)
         if (u.getRoles() != null) {
             u.getRoles().forEach(role -> role.setUsuario(u));
         }
         US.insert(u);
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody UsuarioDTO dto) {
+        ModelMapper m =  new ModelMapper();
+        Usuario u = m.map(dto, Usuario.class);
+
+        Usuario ex = US.listId(u.getIdUsuario());
+        if (ex == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se puede modificar. No existe un registro con el ID: " + u.getIdUsuario());
+        }
+        US.update(u);
+        return ResponseEntity.ok("Usuario con ID " + u.getIdUsuario() + " modificado correctamente.");
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
