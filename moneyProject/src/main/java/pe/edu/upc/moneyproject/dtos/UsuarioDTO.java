@@ -1,10 +1,14 @@
 package pe.edu.upc.moneyproject.dtos;
 
+import java.util.List;
+
 public class UsuarioDTO {
     private int idUsuario;
     private String nombre;
     private String correo;
     private String contrasenia;
+    private List<RoleDTO> roles;// 👈 nueva lista
+
 
     public int getIdUsuario() {
         return idUsuario;

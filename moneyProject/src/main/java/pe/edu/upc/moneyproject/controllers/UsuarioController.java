@@ -56,7 +56,6 @@ public class UsuarioController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
