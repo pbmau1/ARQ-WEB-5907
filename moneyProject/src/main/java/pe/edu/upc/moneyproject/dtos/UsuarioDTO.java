@@ -9,13 +9,20 @@ public class UsuarioDTO {
     private String contrasenia;
     private List<RoleDTO> roles;// 👈 nueva lista
 
-
     public int getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCorreo() {
@@ -34,11 +41,11 @@ public class UsuarioDTO {
         this.contrasenia = contrasenia;
     }
 
-    public String getNombre() {
-        return nombre;
+    public List<RoleDTO> getRoles() {
+        return roles;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setRoles(List<RoleDTO> roles) {
+        this.roles = roles;
     }
 }
