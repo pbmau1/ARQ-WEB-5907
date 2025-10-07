@@ -60,7 +60,10 @@ public class UsuarioController {
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
-        US.insert(u);
+        // 🔹 Asociar los roles al usuario antes de guardar (por seguridad)
+        if (u.getRoles() != null) {
+            u.getRoles().forEach(role -> role.setUsuario(u));
+        }
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
