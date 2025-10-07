@@ -64,6 +64,7 @@ public class UsuarioController {
         if (u.getRoles() != null) {
             u.getRoles().forEach(role -> role.setUsuario(u));
         }
+        US.insert(u);
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
