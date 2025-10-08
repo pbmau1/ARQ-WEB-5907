@@ -16,12 +16,6 @@ public class ImpuestoServiceImplement implements IImpuestoService
    @Autowired
       private IImpuestoRepository iR;
 
-
-    @Override
-    public Void Insert(Impuesto impuesto) {
-        return null;
-    }
-
     @Override
       public void insert(Impuesto impuesto) {iR.save(impuesto);}
    @Override
@@ -34,7 +28,7 @@ public class ImpuestoServiceImplement implements IImpuestoService
 
     @Override
     public void update(Impuesto impuesto) {
-
+        iR.save(impuesto);
     }
 
     @Override
