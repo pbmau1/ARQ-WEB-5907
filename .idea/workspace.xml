@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
+    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/ImpuestoServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/ImpuestoServiceImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IImpuestoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IImpuestoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +18,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Mauricio" />
+        <entry key="$PROJECT_DIR$" value="Angie" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,46 +39,44 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:/pbmau1/ARQ-WEB-5907.git&quot;,
-    &quot;accountId&quot;: &quot;fb6c5710-05cc-4d73-a5b4-37be78d97fc6&quot;
+    &quot;url&quot;: &quot;git@github.com:pbmau1/ARQ-WEB-5907.git&quot;,
+    &quot;accountId&quot;: &quot;34ea1786-4fb8-4a30-bf1f-2c088808a97d&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="32OJWzT96e9kqwwa0w4EkwJRd6a" />
+  <component name="ProjectId" id="332mHMU2xUdk64uBBcb0K5buClD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MoneyProjectApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Angie/IdeaProjects/ARQ-WEB-5907",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MoneyProjectApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Lucarelly&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MoneyProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -100,73 +100,33 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="" />
-      <created>1757285720354</created>
+      <changelist id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="" />
+      <created>1758523452679</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1757285720354</updated>
-      <workItem from="1757285722128" duration="6573000" />
-      <workItem from="1757293881810" duration="7000" />
-      <workItem from="1757293955099" duration="696000" />
-      <workItem from="1757294659580" duration="8384000" />
-      <workItem from="1757602529003" duration="2750000" />
-      <workItem from="1757716384010" duration="3359000" />
-      <workItem from="1757990149301" duration="10037000" />
-      <workItem from="1758039550046" duration="962000" />
-      <workItem from="1758058991048" duration="2079000" />
-      <workItem from="1758143609489" duration="5249000" />
-      <workItem from="1758207438760" duration="2357000" />
-      <workItem from="1758586525961" duration="241000" />
-      <workItem from="1759092388059" duration="3020000" />
-      <workItem from="1759194365350" duration="236000" />
-      <workItem from="1759195635000" duration="1324000" />
-      <workItem from="1759344730660" duration="7722000" />
-      <workItem from="1759418087971" duration="8000" />
-      <workItem from="1759589964231" duration="3345000" />
-      <workItem from="1759610427563" duration="2530000" />
-      <workItem from="1759796335170" duration="3010000" />
-      <workItem from="1759871142359" duration="3051000" />
+      <updated>1758523452679</updated>
+      <workItem from="1758523453808" duration="7515000" />
+      <workItem from="1759196468277" duration="1576000" />
+      <workItem from="1759776764031" duration="2446000" />
+      <workItem from="1759782589904" duration="14000" />
+      <workItem from="1759877455027" duration="4392000" />
     </task>
+    <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
+      <option name="closed" value="true" />
+      <created>1758531155992</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758531155992</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="0fe54b47-be56-41ec-91e4-2d7e227d0595" value="TOOL_WINDOW" />
-        <entry key="e36833b0-b900-4182-8ec7-3e4be7662d8f" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="0fe54b47-be56-41ec-91e4-2d7e227d0595">
-          <value>
-            <State />
-          </value>
-        </entry>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-        <entry key="e36833b0-b900-4182-8ec7-3e4be7662d8f">
-          <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion" />
   </component>
 </project>
