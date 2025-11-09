@@ -12,7 +12,7 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoUsuarioService;
 
 import java.util.List;
 import java.util.stream.Collectors;
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/recurso-usuario")
 public class RecursoUsuarioController {
