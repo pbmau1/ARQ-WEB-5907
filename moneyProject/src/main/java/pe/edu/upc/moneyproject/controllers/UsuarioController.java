@@ -36,7 +36,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
