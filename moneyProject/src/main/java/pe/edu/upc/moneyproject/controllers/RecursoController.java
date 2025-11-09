@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recurso")
 
