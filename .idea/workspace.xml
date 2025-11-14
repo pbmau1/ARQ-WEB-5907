@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RolController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RolDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/repositories/IRolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/RolServiceImplement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IRolService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/Util/CORS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/JwtAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/JwtAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RoleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RoleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/JwtUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/JwtUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +142,14 @@
       <workItem from="1760495248841" duration="1393000" />
       <workItem from="1762311217280" duration="623000" />
       <workItem from="1762363269008" duration="3265000" />
-      <workItem from="1762704268499" duration="11282000" />
+      <workItem from="1762704268499" duration="12281000" />
+      <workItem from="1762742591508" duration="1315000" />
+      <workItem from="1762805165258" duration="2237000" />
+      <workItem from="1762830748738" duration="1473000" />
+      <workItem from="1762879916092" duration="1061000" />
+      <workItem from="1763090606138" duration="7954000" />
+      <workItem from="1763138344061" duration="43000" />
+      <workItem from="1763138636448" duration="27000" />
     </task>
     <servers />
   </component>

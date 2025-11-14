@@ -17,7 +17,6 @@ import pe.edu.upc.moneyproject.securities.JwtTokenUtil;
 import pe.edu.upc.moneyproject.servicesimplements.JwtUserDetailsService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
