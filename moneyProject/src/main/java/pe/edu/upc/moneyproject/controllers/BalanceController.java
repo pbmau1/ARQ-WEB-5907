@@ -27,7 +27,7 @@ public class BalanceController {
     @Autowired
     private StringHttpMessageConverter stringHttpMessageConverter;
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar")
     public List<BalanceDTO> findAll(){
         return BS.findAll().stream().map(x->{
@@ -36,7 +36,7 @@ public class BalanceController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PostMapping("/register")
     public void insert(@RequestBody BalanceDTO balanceDTO){
         ModelMapper m = new ModelMapper();
@@ -44,7 +44,7 @@ public class BalanceController {
         BS.insert(balance);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Balance balance = BS.listId(id);
@@ -56,7 +56,7 @@ public class BalanceController {
         return ResponseEntity.ok("Registro con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody BalanceDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -72,7 +72,7 @@ public class BalanceController {
         return ResponseEntity.ok("Registro con ID " + br.getIdBalance() + " modificado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listarpormes") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> listarpormes(@RequestParam String mes) {
         List<Balance> balances = BS.findBalancesByMes(mes);
@@ -90,7 +90,7 @@ public class BalanceController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/sumadores") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> sumadetotalingr() {
         List<sumatotalingresosBalanceDTO>listaDto=new ArrayList<sumatotalingresosBalanceDTO>();
