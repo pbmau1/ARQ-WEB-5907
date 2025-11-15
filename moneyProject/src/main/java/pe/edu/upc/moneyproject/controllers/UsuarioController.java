@@ -95,7 +95,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
@@ -108,4 +108,19 @@ public class UsuarioController {
         UsuarioDTO dto = m.map(usuario, UsuarioDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/buscar")
+    public List<UsuarioDTO> buscar(@RequestParam String filtro) {
+        return US.list().stream()
+                .filter(u ->
+                        u.getNombre().toLowerCase().contains(filtro.toLowerCase()) ||
+                                u.getCorreo().toLowerCase().contains(filtro.toLowerCase())
+                )
+                .map(u -> {
+                    ModelMapper m = new ModelMapper();
+                    return m.map(u, UsuarioDTO.class);
+                })
+                .collect(Collectors.toList());
+    }
+
 }
