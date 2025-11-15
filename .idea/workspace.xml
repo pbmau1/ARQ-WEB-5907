@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c237cda2-9f4f-46fc-be2a-f87b2efb53e9" name="Changes" comment="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
+
+    <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RolController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RolDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/repositories/IRolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/RolServiceImplement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesinterfaces/IRolService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/AhorroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/JwtAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/JwtAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RoleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/dtos/RoleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/securities/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/JwtUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/servicesimplements/JwtUserDetailsService.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,19 +114,44 @@
       <created>1758523452679</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758523452679</updated>
-      <workItem from="1758523453808" duration="7515000" />
-      <workItem from="1759196468277" duration="1576000" />
-      <workItem from="1759776764031" duration="2446000" />
-      <workItem from="1759782589904" duration="14000" />
-      <workItem from="1759877455027" duration="10200000" />
-      <workItem from="1760286501098" duration="882000" />
-      <workItem from="1760392583095" duration="1434000" />
-      <workItem from="1760396210805" duration="9000" />
-      <workItem from="1762730398846" duration="6687000" />
-      <workItem from="1762818120293" duration="4000" />
-      <workItem from="1762876274139" duration="3889000" />
-      <workItem from="1763223431499" duration="8169000" />
+
+      <updated>1757285720354</updated>
+      <workItem from="1757285722128" duration="6573000" />
+      <workItem from="1757293881810" duration="7000" />
+      <workItem from="1757293955099" duration="696000" />
+      <workItem from="1757294659580" duration="8384000" />
+      <workItem from="1757602529003" duration="2750000" />
+      <workItem from="1757716384010" duration="3359000" />
+      <workItem from="1757990149301" duration="10037000" />
+      <workItem from="1758039550046" duration="962000" />
+      <workItem from="1758058991048" duration="2079000" />
+      <workItem from="1758143609489" duration="5249000" />
+      <workItem from="1758207438760" duration="2357000" />
+      <workItem from="1758586525961" duration="241000" />
+      <workItem from="1759092388059" duration="3020000" />
+      <workItem from="1759194365350" duration="236000" />
+      <workItem from="1759195635000" duration="1324000" />
+      <workItem from="1759344730660" duration="7722000" />
+      <workItem from="1759418087971" duration="8000" />
+      <workItem from="1759589964231" duration="3345000" />
+      <workItem from="1759610427563" duration="2530000" />
+      <workItem from="1759796335170" duration="6696000" />
+      <workItem from="1759864188413" duration="19230000" />
+      <workItem from="1760288219268" duration="5524000" />
+      <workItem from="1760399170677" duration="15854000" />
+      <workItem from="1760465181528" duration="688000" />
+      <workItem from="1760495248841" duration="1393000" />
+      <workItem from="1762311217280" duration="623000" />
+      <workItem from="1762363269008" duration="3265000" />
+      <workItem from="1762704268499" duration="12281000" />
+      <workItem from="1762742591508" duration="1315000" />
+      <workItem from="1762805165258" duration="2237000" />
+      <workItem from="1762830748738" duration="1473000" />
+      <workItem from="1762879916092" duration="1061000" />
+      <workItem from="1763090606138" duration="7954000" />
+      <workItem from="1763138344061" duration="43000" />
+      <workItem from="1763138636448" duration="27000" />
+
     </task>
     <task id="LOCAL-00001" summary="Creación Query para busqueda por fecha y correccion de errores en la tabla operacion">
       <option name="closed" value="true" />
