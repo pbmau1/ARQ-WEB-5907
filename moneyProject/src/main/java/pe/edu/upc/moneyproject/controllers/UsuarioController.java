@@ -36,7 +36,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -68,7 +68,7 @@ public class UsuarioController {
         US.insert(u);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody UsuarioDTO dto) {
         ModelMapper m =  new ModelMapper();
@@ -83,7 +83,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + u.getIdUsuario() + " modificado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
