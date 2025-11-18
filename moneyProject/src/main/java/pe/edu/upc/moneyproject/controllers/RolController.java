@@ -7,11 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.moneyproject.dtos.BalanceDTO;
-import pe.edu.upc.moneyproject.dtos.RolDTO;
-import pe.edu.upc.moneyproject.dtos.RoleDTO;
-import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
+import pe.edu.upc.moneyproject.dtos.*;
 import pe.edu.upc.moneyproject.entities.Balance;
+import pe.edu.upc.moneyproject.entities.Impuesto;
 import pe.edu.upc.moneyproject.entities.Role;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IRolService;
@@ -69,6 +67,20 @@ public class RolController {
             ModelMapper m = new ModelMapper();
             return m.map(x,RolDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<RoleDTO> findById(@PathVariable("id") Integer id) {
+        Role rol = RS.listId(id);
+
+        if (rol == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        RoleDTO dto = m.map(rol, RoleDTO.class);
+
+        return ResponseEntity.ok(dto);
     }
 
 

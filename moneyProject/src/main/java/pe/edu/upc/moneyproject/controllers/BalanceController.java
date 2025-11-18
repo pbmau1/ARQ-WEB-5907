@@ -109,6 +109,20 @@ public class BalanceController {
         return ResponseEntity.ok(listaDto);
     }
 
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<BalanceDTO> findById(@PathVariable("id") Integer id) {
+        Balance balance = BS.listId(id);
+
+        if (balance == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        BalanceDTO dto = m.map(balance, BalanceDTO.class);
+
+        return ResponseEntity.ok(dto);
+    }
+
 
 
 }

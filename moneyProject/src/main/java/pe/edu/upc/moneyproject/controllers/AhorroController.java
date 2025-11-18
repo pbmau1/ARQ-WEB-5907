@@ -9,8 +9,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.AhorroDTO;
 import pe.edu.upc.moneyproject.dtos.AhorroTotalDTO;
+import pe.edu.upc.moneyproject.dtos.RecursoDTO;
 import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
 import pe.edu.upc.moneyproject.entities.Ahorro;
+import pe.edu.upc.moneyproject.entities.Recurso;
 import pe.edu.upc.moneyproject.servicesinterfaces.IAhorroService;
 
 import java.time.LocalDate;
@@ -106,5 +108,19 @@ public class AhorroController {
         }
 
         return ResponseEntity.ok(listDTO);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<AhorroDTO> findById(@PathVariable("id") Integer id) {
+        Ahorro ahorro = aS.listId(id);
+
+        if (ahorro == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        AhorroDTO dto = m.map(ahorro, AhorroDTO.class);
+
+        return ResponseEntity.ok(dto);
     }
 }
