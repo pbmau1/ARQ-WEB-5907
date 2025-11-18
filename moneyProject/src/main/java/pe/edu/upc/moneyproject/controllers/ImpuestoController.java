@@ -90,5 +90,19 @@ public class ImpuestoController {
         return ResponseEntity.ok(resultados);
     }
 
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<ImpuestoDTO> findById(@PathVariable("id") Integer id) {
+        Impuesto impuesto = iS.listId(id);
+
+        if (impuesto == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        ImpuestoDTO dto = m.map(impuesto, ImpuestoDTO.class);
+
+        return ResponseEntity.ok(dto);
+    }
+
 
 }

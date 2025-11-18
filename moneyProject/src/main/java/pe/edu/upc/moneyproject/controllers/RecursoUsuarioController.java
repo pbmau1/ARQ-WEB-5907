@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.moneyproject.dtos.RecursoDTO;
 import pe.edu.upc.moneyproject.dtos.RecursoUsuarioDTO;
+import pe.edu.upc.moneyproject.entities.Recurso;
 import pe.edu.upc.moneyproject.entities.RecursoUsuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoUsuarioService;
 
@@ -59,6 +61,20 @@ public class RecursoUsuarioController {
         }
         ruS.delete(id);
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<RecursoUsuarioDTO> findById(@PathVariable("id") Integer id) {
+        RecursoUsuario recursoUsuario = ruS.listId(id);
+
+        if (recursoUsuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        RecursoUsuarioDTO dto = m.map(recursoUsuario, RecursoUsuarioDTO.class);
+
+        return ResponseEntity.ok(dto);
     }
 
 }

@@ -14,7 +14,7 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recurso")
 
@@ -22,7 +22,7 @@ public class RecursoController {
     @Autowired
     private IRecursoService rS;
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar")
     public List<RecursoDTO> findAll() {
         return rS.findAll().stream().map(x->{
@@ -31,7 +31,7 @@ public class RecursoController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody RecursoDTO recursoDTO) {
         ModelMapper m= new ModelMapper();
@@ -39,7 +39,7 @@ public class RecursoController {
         rS.insert(recurso);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -55,7 +55,7 @@ public class RecursoController {
         return ResponseEntity.ok("Registro con ID " + re.getIdRecurso() + " modificado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);
@@ -67,7 +67,7 @@ public class RecursoController {
         return ResponseEntity.ok("Recurso con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/recursoporautor")
     public ResponseEntity<?> listarporautor(@RequestParam String autor) {
         List<Recurso> recursos = rS.findRecursoByAutor(autor);
@@ -85,7 +85,7 @@ public class RecursoController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/recursoporfecha")
     public ResponseEntity<?> listarporfecga(@RequestParam LocalDate fecha) {
         List<Recurso> recursoxfecha = rS.findRecursoByFecha(fecha);
@@ -101,5 +101,19 @@ public class RecursoController {
         }).collect(Collectors.toList());
 
         return ResponseEntity.ok(listaDTO);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<RecursoDTO> findById(@PathVariable("id") Integer id) {
+        Recurso recurso = rS.listId(id);
+
+        if (recurso == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        RecursoDTO dto = m.map(recurso, RecursoDTO.class);
+
+        return ResponseEntity.ok(dto);
     }
 }
