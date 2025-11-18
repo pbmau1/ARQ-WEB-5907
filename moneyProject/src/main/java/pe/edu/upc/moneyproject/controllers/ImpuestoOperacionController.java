@@ -63,5 +63,18 @@ public class ImpuestoOperacionController {
         ioS.delete(id);
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<ImpuestoOperacionDTO> findById(@PathVariable("id") Integer id) {
+        ImpuestoOperacion io = ioS.listId(id);
+
+        if (io == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        ImpuestoOperacionDTO dto = m.map(io, ImpuestoOperacionDTO.class);
+
+        return ResponseEntity.ok(dto);
+    }
 
 }
