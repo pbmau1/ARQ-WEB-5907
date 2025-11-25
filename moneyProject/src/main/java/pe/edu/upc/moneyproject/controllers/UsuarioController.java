@@ -26,7 +26,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    ///@PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {

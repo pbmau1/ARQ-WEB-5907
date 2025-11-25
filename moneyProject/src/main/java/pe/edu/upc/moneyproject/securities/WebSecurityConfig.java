@@ -28,14 +28,14 @@ import java.util.List;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
-    @Autowired
-    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    //@Autowired
+    //private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    @Autowired
-    private UserDetailsService jwtUserDetailsService;
+    //@Autowired
+    //private UserDetailsService jwtUserDetailsService;
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    //@Autowired
+    //private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
     @Qualifier("handlerExceptionResolver")
@@ -51,10 +51,10 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
-    }
+    //@Autowired
+    //public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    //    auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
+    //}
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -63,22 +63,27 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults()) // 👈 habilita CORS
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/login",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/usuarios/**",
-                                "/operacion/listar",
-                                "/recurso/**",
-                                "/impuestos/**",
-                                "/impuesto-operacion/**"       
-                                 ).permitAll()
-                        .anyRequest().authenticated()
-                )
-                .httpBasic(Customizer.withDefaults())
-                .formLogin(AbstractHttpConfigurer::disable)
-                .exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint))
-                .sessionManagement(Customizer.withDefaults());
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                        .anyRequest().permitAll()   // 🔥 TODO ABIERTO SIN AUTENTICACIÓN
+                ).httpBasic(AbstractHttpConfigurer::disable) // ❌ NO AUTH BÁSICA
+                .formLogin(AbstractHttpConfigurer::disable);
+                //.authorizeHttpRequests(req -> req
+                //        .requestMatchers("/login",
+                //                "/v3/api-docs/**",
+                //                "/swagger-ui/**",
+                //                "/usuarios/**",
+                //                "/operacion/**",
+                //                "/recurso/**",
+                //                "/impuestos/**",
+                //                "/impuesto-operacion/**",
+                //                "/recurso-usuario/**"
+                //                 ).permitAll()
+                //        .anyRequest().authenticated()
+                //)
+                //.httpBasic(Customizer.withDefaults())
+                //.formLogin(AbstractHttpConfigurer::disable)
+                //.exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                //.sessionManagement(Customizer.withDefaults());
+        //httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
     @Bean

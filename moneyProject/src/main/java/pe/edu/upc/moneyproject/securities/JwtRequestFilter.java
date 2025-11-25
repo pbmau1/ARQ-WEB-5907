@@ -32,7 +32,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (path.equals("/login")
                 || path.startsWith("/v3/api-docs")
                 || path.startsWith("/swagger-ui")
-                || path.startsWith("/usuarios")) {
+                || path.startsWith("/usuarios")
+                || path.startsWith("/operaciones")
+                || path.startsWith("/recurso")
+                || path.startsWith("/impuestos")
+                || path.startsWith("/impuesto-operacion")
+                || path.startsWith("/recurso-usuario")
+        ) {
 
             chain.doFilter(request, response);
             return;

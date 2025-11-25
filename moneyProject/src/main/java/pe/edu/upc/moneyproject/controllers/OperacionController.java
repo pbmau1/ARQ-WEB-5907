@@ -8,7 +8,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.OperacionDTO;
 import pe.edu.upc.moneyproject.dtos.SumaOpPorUsDTO;
+import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
 import pe.edu.upc.moneyproject.entities.Operacion;
+import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
 import java.time.LocalDate;
@@ -16,13 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/operacion")
 public class OperacionController {
     @Autowired
     private IOperacionService oS;
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listar")
     public List<OperacionDTO> findAll(){
         return oS.findAll().stream().map(x->{
@@ -31,7 +33,6 @@ public class OperacionController {
         }).collect(Collectors.toList());
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PostMapping("/register")
     public void insert(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -39,7 +40,6 @@ public class OperacionController {
         oS.insert(operacion);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody OperacionDTO operacionDTO){
         ModelMapper m = new ModelMapper();
@@ -55,7 +55,6 @@ public class OperacionController {
         return ResponseEntity.ok("Registro con ID " + op.getIdOperacion() + " modificado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Operacion operacion = oS.listId(id);
@@ -67,7 +66,6 @@ public class OperacionController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/listarporcategoria") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> listarporcategoria(@RequestParam String categoria) {
         List<Operacion> operaciones = oS.findOperacionByCategoria(categoria);
@@ -85,7 +83,6 @@ public class OperacionController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/busquedafecha")
     public ResponseEntity<?> buscar(@RequestParam LocalDate f) {
         List<Operacion> operaciones = oS.searchOp(f);
@@ -103,7 +100,6 @@ public class OperacionController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/suma-por-usuario")
     public ResponseEntity<?> sumaOperacionesPorUsuario() {
 
@@ -125,5 +121,18 @@ public class OperacionController {
         }
 
         return ResponseEntity.ok(listaDto);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
+        Operacion operacion = oS.listId(id);
+        if (operacion == null) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No existe un operacion con el ID: " + id);
+        }
+        ModelMapper m = new ModelMapper();
+        OperacionDTO dto = m.map(operacion, OperacionDTO.class);
+        return ResponseEntity.ok(dto);
     }
 }
