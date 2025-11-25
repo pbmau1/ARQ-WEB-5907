@@ -15,14 +15,14 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IRecursoUsuarioService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recurso-usuario")
 public class RecursoUsuarioController {
     @Autowired
     private IRecursoUsuarioService ruS;
 
-    @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/listar")
     public List<RecursoUsuarioDTO> findAll(){
         return ruS.findAll().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -30,14 +30,14 @@ public class RecursoUsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void insert(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
         RecursoUsuario recursoUsuario = m.map(recursoUsuarioDTO, RecursoUsuario.class);
         ruS.insert(recursoUsuario);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
         RecursoUsuario ru = m.map(recursoUsuarioDTO,RecursoUsuario.class);
@@ -52,7 +52,7 @@ public class RecursoUsuarioController {
         return ResponseEntity.ok("Registro con ID " + ru.getIdRecursoUsuario() + " modificado correctamente.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         RecursoUsuario recursoUsuarioExiste = ruS.listId(id);
         if(recursoUsuarioExiste==null){
