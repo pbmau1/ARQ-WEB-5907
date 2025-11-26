@@ -96,18 +96,7 @@ public class UsuarioController {
     }
 
     //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    @GetMapping("/listar/{id}")
-    public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
-        Usuario usuario = US.listId(id);
-        if (usuario == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("No existe un usuario con el ID: " + id);
-        }
-        ModelMapper m = new ModelMapper();
-        UsuarioDTO dto = m.map(usuario, UsuarioDTO.class);
-        return ResponseEntity.ok(dto);
-    }
+
 
     @GetMapping("/buscar")
     public List<UsuarioDTO> buscar(@RequestParam String filtro) {

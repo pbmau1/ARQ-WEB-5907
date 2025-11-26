@@ -21,8 +21,7 @@ public class Usuario {
     @Column(name = "contrasenia", length = 100, nullable = false)
     private String contrasenia;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Role> roles;
 
 

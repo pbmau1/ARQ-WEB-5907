@@ -22,6 +22,7 @@ public class RecursoUsuarioController {
     @Autowired
     private IRecursoUsuarioService ruS;
 
+    @PreAuthorize("hasAuthority('ADMIN') ")
     @GetMapping("/listar")
     public List<RecursoUsuarioDTO> findAll(){
         return ruS.findAll().stream().map(x->{
@@ -29,7 +30,7 @@ public class RecursoUsuarioController {
             return m.map(x,RecursoUsuarioDTO.class);
         }).collect(Collectors.toList());
     }
-
+    @PreAuthorize("hasAuthority('ADMIN') ")
     @PostMapping("/register")
     public void insert(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
@@ -37,6 +38,7 @@ public class RecursoUsuarioController {
         ruS.insert(recursoUsuario);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') ")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
@@ -63,6 +65,7 @@ public class RecursoUsuarioController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') ")
     @GetMapping("/listar/{id}")
     public ResponseEntity<RecursoUsuarioDTO> findById(@PathVariable("id") Integer id) {
         RecursoUsuario recursoUsuario = ruS.listId(id);
