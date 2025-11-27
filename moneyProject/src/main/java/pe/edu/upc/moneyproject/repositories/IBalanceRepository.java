@@ -18,4 +18,27 @@ public interface IBalanceRepository extends JpaRepository<Balance,Integer> {
             " on u.id_usuario = b.id_usuario\n" +
             " group by u.nombre", nativeQuery = true)
     public List<String[]> sumadetotalingr();
+
+    @Query("SELECT COALESCE(SUM(o.monto) ,0)"
+            + "FROM Operacion o "
+            + "WHERE o.usuario.idUsuario = :idUsuario "
+            + "AND o.tipo = 'Ingreso' "
+            + "AND MONTH(o.fecha) = :mes "
+            + "AND YEAR(o.fecha) = :anio")
+    double obtenerTotalIngresos(int idUsuario, int mes, int anio);
+
+    @Query("SELECT COALESCE(SUM(o.monto),0) "
+            + "FROM Operacion o "
+            + "WHERE o.usuario.idUsuario = :idUsuario "
+            + "AND o.tipo = 'Gasto' "
+            + "AND MONTH(o.fecha) = :mes "
+            + "AND YEAR(o.fecha) = :anio")
+    double obtenerTotalGastos(int idUsuario, int mes, int anio);
+
+    @Query("select COALESCE(SUM(o.monto),0)"
+            + "FROM Operacion o " + "WHERE o.usuario.idUsuario = :idUsuario "
+            + "AND o.tipo = 'Ahorro' "
+            + "AND MONTH(o.fecha) = :mes "
+            + "AND YEAR(o.fecha) = :anio")
+    double obtenerTotalAhorro(int idUsuario, int mes, int anio);
 }

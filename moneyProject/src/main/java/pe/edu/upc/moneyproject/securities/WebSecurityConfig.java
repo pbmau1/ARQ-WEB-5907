@@ -64,7 +64,7 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults()) // 👈 habilita CORS
 
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/login",
+                        .requestMatchers("/jose",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/usuarios/**",

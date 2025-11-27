@@ -12,6 +12,8 @@ public interface IBalanceService {
     public void update(Balance balance);
     List<Balance> findBalancesByMes(String mes);
     public List<String[]> sumadetotalingr();
-
+    double obtenerTotalIngresos(int idUsuario, int mes, int anio);
+    double obtenerTotalGastos(int idUsuario, int mes, int anio);
+    double obtenerTotalAhorro(int idUsuario, int mes, int anio);
 
 }
