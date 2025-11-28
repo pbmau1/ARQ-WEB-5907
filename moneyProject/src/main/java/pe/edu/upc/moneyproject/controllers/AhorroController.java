@@ -27,7 +27,7 @@ public class AhorroController {
     @Autowired
     private IAhorroService aS;
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar")
     public List<AhorroDTO> findAll(){
         return aS.findAll().stream().map(x->{
@@ -36,7 +36,7 @@ public class AhorroController {
         }).collect(Collectors.toList());
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @PostMapping("/register")
     public ResponseEntity<String> insert(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
@@ -45,7 +45,7 @@ public class AhorroController {
         return ResponseEntity.ok("Se registro correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody AhorroDTO ahorroDTO){
         ModelMapper m = new ModelMapper();
@@ -61,7 +61,7 @@ public class AhorroController {
         return ResponseEntity.ok("Ahorro con ID " + ah.getIdAhorro() + " modificado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         Ahorro ahorro = aS.listId(id);
@@ -73,7 +73,7 @@ public class AhorroController {
         return ResponseEntity.ok("Ahorro con ID " + id + " eliminado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/periodo")
     public ResponseEntity<?> findByPeriodo(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end){
@@ -87,7 +87,7 @@ public class AhorroController {
         return ResponseEntity.ok(ahorros);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/ahorrototal/{id}")
     public ResponseEntity<?> AhorroTotal(@PathVariable("id") Integer id){
 
@@ -110,6 +110,8 @@ public class AhorroController {
         return ResponseEntity.ok(listDTO);
     }
 
+
+    @PreAuthorize(" hasAuthority('CLIENT')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<AhorroDTO> findById(@PathVariable("id") Integer id) {
         Ahorro ahorro = aS.listId(id);

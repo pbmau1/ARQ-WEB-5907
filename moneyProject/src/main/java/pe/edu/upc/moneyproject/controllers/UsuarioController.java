@@ -7,10 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import pe.edu.upc.moneyproject.dtos.OperacionDTO;
-import pe.edu.upc.moneyproject.dtos.Query1;
-import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
-import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
+import pe.edu.upc.moneyproject.dtos.*;
 import pe.edu.upc.moneyproject.entities.Role;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
@@ -27,7 +24,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT') ")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
@@ -37,7 +34,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    //@PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -77,7 +74,7 @@ public class UsuarioController {
         US.insert(u);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody UsuarioDTO dto) {
         ModelMapper m =  new ModelMapper();
@@ -92,7 +89,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + u.getIdUsuario() + " modificado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario usuario = US.listId(id);
@@ -104,9 +101,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-
-
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/buscar")
     public List<UsuarioDTO> buscar(@RequestParam String filtro) {
         return US.list().stream()
@@ -119,6 +114,21 @@ public class UsuarioController {
                     return m.map(u, UsuarioDTO.class);
                 })
                 .collect(Collectors.toList());
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<UsuarioDTO> findById(@PathVariable("id") Integer id) {
+        Usuario us = US.listId(id);
+
+        if (us == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        UsuarioDTO dto = m.map(us, UsuarioDTO.class);
+
+        return ResponseEntity.ok(dto);
     }
 
 }
