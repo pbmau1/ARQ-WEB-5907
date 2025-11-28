@@ -22,6 +22,7 @@ public class ImpuestoController {
     @Autowired
     private IImpuestoService iS;
 
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @GetMapping("/listar")
     public List<ImpuestoDTO> findAll() {
         return iS.findAll().stream().map(x -> {
@@ -30,6 +31,7 @@ public class ImpuestoController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @PostMapping("/register")
     public void insert(@RequestBody ImpuestoDTO impuestoDTO) {
         ModelMapper m = new ModelMapper();
@@ -37,7 +39,7 @@ public class ImpuestoController {
         iS.insert(impuesto);
     }
 
-    //  PUT - modificar un impuesto
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @PutMapping("/update")
         public ResponseEntity<String> modificar(@RequestBody ImpuestoDTO impuestoDTO){
             ModelMapper m = new ModelMapper();
@@ -53,7 +55,7 @@ public class ImpuestoController {
             return ResponseEntity.ok("Impuesto con ID " + impuesto.getIdImpuesto() + " modificado correctamente.");
         }
 
-        //  DELETE - eliminar un impuesto
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
         @DeleteMapping("/delete/{id}")
         public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
             Impuesto impuesto = iS.listId(id);
@@ -64,6 +66,8 @@ public class ImpuestoController {
             iS.delete(id);
             return ResponseEntity.ok("Impuesto con ID " + id + " eliminado correctamente.");}
 
+
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @GetMapping("/resumen-tipo")
     public ResponseEntity<?> obtenerTotalesPorTipo() {
         List<ImpuestoResumenDTO> lista = iS.obtenerTotalesPorTipo();
@@ -76,6 +80,7 @@ public class ImpuestoController {
         return ResponseEntity.ok(lista);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @GetMapping("/promedio-tipo")
     public ResponseEntity<?> obtenerPromediosPorTipo() {
         List<Object[]> resultados = iS.obtenerPromediosPorTipo();
@@ -86,6 +91,8 @@ public class ImpuestoController {
         return ResponseEntity.ok(resultados);
     }
 
+
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<ImpuestoDTO> findById(@PathVariable("id") Integer id) {
         Impuesto impuesto = iS.listId(id);
