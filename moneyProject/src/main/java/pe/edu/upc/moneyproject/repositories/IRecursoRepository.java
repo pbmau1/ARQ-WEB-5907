@@ -17,5 +17,7 @@ public interface IRecursoRepository extends JpaRepository<Recurso,Integer> {
     @Query("SELECT r from Recurso r where r.fechasubida=:fs group by r.idRecurso")
     public List<Recurso> obtenerRecursoPorDia(@Param("fs") LocalDate fechasubida);
 
+   public List<Recurso> findByFechapublicacion(LocalDate fechapublicacion);
+
 }
 
