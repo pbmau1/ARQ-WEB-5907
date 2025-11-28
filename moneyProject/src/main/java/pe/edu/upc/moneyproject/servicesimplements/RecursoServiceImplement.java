@@ -38,7 +38,5 @@ public class RecursoServiceImplement implements IRecursoService {
     public List<Recurso> findRecursoByAutor(String autor){return rR.findRecursoByAutor(autor);}
 
     @Override
-    public List<Recurso> findRecursoByFecha(LocalDate fecha) {
-        return rR.obtenerRecursoPorDia(fecha);
-    }
+    public List<Recurso>findRecursoByFechaPublicacion(LocalDate fechaPublicacion) {return rR.findByFechapublicacion(fechaPublicacion);};
 }
