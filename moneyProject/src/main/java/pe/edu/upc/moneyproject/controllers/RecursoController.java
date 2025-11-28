@@ -86,19 +86,18 @@ public class RecursoController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    @GetMapping("/recursoporfecha")
-    public ResponseEntity<?> listarporfecga(@RequestParam LocalDate fecha) {
-        List<Recurso> recursoxfecha = rS.findRecursoByFecha(fecha);
+     @GetMapping("/recursoporfecha")
+    public ResponseEntity<?> listarporfecha(@RequestParam LocalDate fecha) {
+        List<Recurso> recursoxfecha = rS.findRecursoByFechaPublicacion(fecha);
 
         if (recursoxfecha.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron recursos en la fecha : " + recursoxfecha);
+            return ResponseEntity.ok(List.of());
         }
 
-        List<RecursoDTO> listaDTO = recursoxfecha.stream().map(x -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(x, RecursoDTO.class);
-        }).collect(Collectors.toList());
+        ModelMapper m = new ModelMapper();
+        List<RecursoDTO> listaDTO = recursoxfecha.stream()
+                .map(x -> m.map(x, RecursoDTO.class))
+                .collect(Collectors.toList());
 
         return ResponseEntity.ok(listaDTO);
     }
