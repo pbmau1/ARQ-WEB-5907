@@ -23,14 +23,11 @@ public class BalanceServiceImplement implements IBalanceService {
         double gastos = BR.obtenerTotalGastos(idUsuario, mes, anio);
         double ahorro = BR.obtenerTotalAhorro(idUsuario, mes, anio);
 
-        balance.setTotal_ingreso(0);
         balance.setTotal_ingreso(ingresos);
         balance.setTotal_gasto(gastos);
         balance.setTotal_ahorro(ahorro);
 
         balance.setBalance(ingresos - gastos);
-
-        BR.save(balance);
 
         BR.save(balance);
     }

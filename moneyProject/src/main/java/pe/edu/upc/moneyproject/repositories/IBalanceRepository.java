@@ -3,6 +3,7 @@ package pe.edu.upc.moneyproject.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.moneyproject.entities.Balance;
 import pe.edu.upc.moneyproject.entities.Usuario;
@@ -41,4 +42,12 @@ public interface IBalanceRepository extends JpaRepository<Balance,Integer> {
             + "AND MONTH(o.fecha) = :mes "
             + "AND YEAR(o.fecha) = :anio")
     double obtenerTotalAhorro(int idUsuario, int mes, int anio);
+
+    @Query("SELECT b FROM Balance b " +
+            "WHERE b.usuario.idUsuario = :idUsuario " +
+            "AND b.mes = :mes " +
+            "AND b.anio = :anio")
+    Balance findByUsuarioMesAnio(@Param("idUsuario") int idUsuario,
+                                 @Param("mes") String mes,
+                                 @Param("anio") int anio);
 }
