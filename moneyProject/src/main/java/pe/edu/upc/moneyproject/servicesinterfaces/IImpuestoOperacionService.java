@@ -10,4 +10,5 @@ public interface IImpuestoOperacionService {
     public void update(ImpuestoOperacion impuestoOperacion);
     public void delete(int id);
     public ImpuestoOperacion listId(int id);
+    public List<Object[]> obtenerImpuestosIngresos();
 }

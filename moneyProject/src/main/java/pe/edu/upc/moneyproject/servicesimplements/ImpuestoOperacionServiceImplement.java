@@ -38,4 +38,8 @@ public class ImpuestoOperacionServiceImplement implements IImpuestoOperacionServ
         return ioR.findById(id).orElse(null);
     }
 
+    @Override
+    public List<Object[]> obtenerImpuestosIngresos(){return ioR.obtenerImpuestosIngresos();};
+
+
 }

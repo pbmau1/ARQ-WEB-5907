@@ -6,11 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.moneyproject.dtos.OperacionDTO;
-import pe.edu.upc.moneyproject.dtos.SumaOpPorUsDTO;
-import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
+import pe.edu.upc.moneyproject.dtos.*;
 import pe.edu.upc.moneyproject.entities.Operacion;
 import pe.edu.upc.moneyproject.entities.Usuario;
+import pe.edu.upc.moneyproject.repositories.IImpuestoOperacionRepository;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 
 import java.time.LocalDate;
@@ -24,6 +23,8 @@ import java.util.stream.Collectors;
 public class OperacionController {
     @Autowired
     private IOperacionService oS;
+    @Autowired
+    private IImpuestoOperacionRepository iImpuestoOperacionRepository;
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar")
@@ -142,7 +143,6 @@ public class OperacionController {
 
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
-
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Operacion operacion = oS.listId(id);
@@ -155,4 +155,6 @@ public class OperacionController {
         OperacionDTO dto = m.map(operacion, OperacionDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+
 }
