@@ -24,7 +24,7 @@ public class RolController {
     @Autowired
     private IRolService RS;
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody RolDTO dto){
         ModelMapper m = new ModelMapper();
@@ -32,7 +32,7 @@ public class RolController {
         RS.insert(r);
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RolDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -48,7 +48,7 @@ public class RolController {
         return ResponseEntity.ok("Rol con ID " + r.getId() + " modificado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Role r = RS.listId(id);
@@ -60,7 +60,7 @@ public class RolController {
         return ResponseEntity.ok("Rol con ID " + id + " eliminado correctamente.");
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar")
     public List<RolDTO> list(){
         return RS.list().stream().map(x->{
@@ -69,6 +69,7 @@ public class RolController {
         }).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<RoleDTO> findById(@PathVariable("id") Integer id) {
         Role rol = RS.listId(id);

@@ -11,6 +11,7 @@ import pe.edu.upc.moneyproject.dtos.OperacionDTO;
 import pe.edu.upc.moneyproject.dtos.Query1;
 import pe.edu.upc.moneyproject.dtos.UsuarioDTO;
 import pe.edu.upc.moneyproject.dtos.UsuariosDTO;
+import pe.edu.upc.moneyproject.entities.Role;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
 
@@ -60,11 +61,19 @@ public class UsuarioController {
 
     @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
+        // Convertimos DTO a entidad Usuario
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
-        if (u.getRoles() != null) {
-            u.getRoles().forEach(role -> role.setUsuario(u));
-        }
+
+        // Creamos el rol por defecto
+        Role r = new Role();
+        r.setRol("CLIENT");  // siempre CLIENT
+        r.setUsuario(u);     // vinculamos con el usuario
+
+        // Asignamos la lista de roles al usuario
+        u.setRoles(List.of(r));
+
+        // Insertamos usuario con roles en cascada
         US.insert(u);
     }
 
