@@ -13,5 +13,5 @@ public interface IRecursoService {
     public void update(Recurso recurso);
     public void delete(int id);
     public List<Recurso> findRecursoByAutor(String autor);
-    public List<Recurso> findRecursoByFecha(LocalDate fecha);
+    public List<Recurso>  findRecursoByFechaPublicacion(LocalDate fechaPublicacion);
 }
