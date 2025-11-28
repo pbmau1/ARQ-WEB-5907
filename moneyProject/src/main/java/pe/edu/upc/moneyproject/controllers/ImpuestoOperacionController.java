@@ -20,7 +20,7 @@ public class ImpuestoOperacionController {
     @Autowired
     private IImpuestoOperacionService ioS;
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/listar")
     public List<ImpuestoOperacionDTO> findAll(){
         return ioS.findAll().stream().map(x->{
@@ -29,7 +29,7 @@ public class ImpuestoOperacionController {
         }).collect(Collectors.toList());
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody ImpuestoOperacionDTO impuestoOperacionDTO){
         ModelMapper m = new ModelMapper();
@@ -37,7 +37,7 @@ public class ImpuestoOperacionController {
         ioS.insert(impuestoOperacion);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody ImpuestoOperacionDTO impuestoOperacionDTO){
         ModelMapper m = new ModelMapper();
@@ -53,7 +53,7 @@ public class ImpuestoOperacionController {
         return ResponseEntity.ok("Registro con ID " + io.getIdImpuestoOperacion() + " modificado correctamente.");
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         ImpuestoOperacion impuestoOperacionexiste = ioS.listId(id);
@@ -65,6 +65,7 @@ public class ImpuestoOperacionController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<ImpuestoOperacionDTO> findById(@PathVariable("id") Integer id) {
         ImpuestoOperacion io = ioS.listId(id);
