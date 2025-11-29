@@ -31,7 +31,7 @@ public class RecursoController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody RecursoDTO recursoDTO) {
         ModelMapper m= new ModelMapper();

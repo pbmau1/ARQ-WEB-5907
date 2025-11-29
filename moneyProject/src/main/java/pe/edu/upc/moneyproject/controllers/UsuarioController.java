@@ -24,7 +24,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT') ")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
@@ -34,7 +34,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -58,7 +58,6 @@ public class UsuarioController {
 
     @PostMapping("/register")
     public void insertar(@RequestBody UsuarioDTO dto) {
-        // Convertimos DTO a entidad Usuario
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
 
@@ -101,7 +100,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/buscar")
     public List<UsuarioDTO> buscar(@RequestParam String filtro) {
         return US.list().stream()
@@ -116,7 +115,7 @@ public class UsuarioController {
                 .collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable("id") Integer id) {
         Usuario us = US.listId(id);
