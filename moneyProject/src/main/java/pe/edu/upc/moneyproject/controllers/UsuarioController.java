@@ -24,7 +24,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService US;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar")
     public List<UsuarioDTO> listar() {
         return US.list().stream().map(x -> {
@@ -34,7 +34,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
@@ -76,7 +76,8 @@ public class UsuarioController {
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody UsuarioDTO dto) {
-        ModelMapper m =  new ModelMapper();
+
+        ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
 
         Usuario ex = US.listId(u.getIdUsuario());
@@ -84,8 +85,14 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se puede modificar. No existe un registro con el ID: " + u.getIdUsuario());
         }
+
+        u.setRoles(ex.getRoles());
+        if (dto.getContrasenia() == null || dto.getContrasenia().isBlank()) {
+            u.setContrasenia(ex.getContrasenia());
+        }
+
         US.update(u);
-        return ResponseEntity.ok("Usuario con ID " + u.getIdUsuario() + " modificado correctamente.");
+        return ResponseEntity.ok("Usuario actualizado correctamente");
     }
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
@@ -100,7 +107,7 @@ public class UsuarioController {
         return ResponseEntity.ok("Usuario con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/buscar")
     public List<UsuarioDTO> buscar(@RequestParam String filtro) {
         return US.list().stream()
@@ -115,7 +122,7 @@ public class UsuarioController {
                 .collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable("id") Integer id) {
         Usuario us = US.listId(id);
