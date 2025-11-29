@@ -54,6 +54,7 @@ public class RecursoUsuarioController {
         return ResponseEntity.ok("Registro con ID " + ru.getIdRecursoUsuario() + " modificado correctamente.");
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         RecursoUsuario recursoUsuarioExiste = ruS.listId(id);
