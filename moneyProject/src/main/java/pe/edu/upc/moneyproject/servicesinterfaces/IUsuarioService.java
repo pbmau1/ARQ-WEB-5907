@@ -12,4 +12,5 @@ public interface IUsuarioService {
     public void update(Usuario usuario);
     public Usuario listId(int id);
     List<String[]> findUsuarios();
+    boolean existsByCorreo(String correo);
 }

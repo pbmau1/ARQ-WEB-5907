@@ -38,12 +38,12 @@ public class UsuarioController {
     @GetMapping("/listar/users")
     public ResponseEntity<?> MostrarUsuarios() {
 
-        List<UsuariosDTO>list =new ArrayList<>();
-        List<String[]>fila = US.findUsuarios();
+        List<UsuariosDTO> list = new ArrayList<>();
+        List<String[]> fila = US.findUsuarios();
 
-        if(fila.isEmpty()){
+        if (fila.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No existen usuarios registrados" );
+                    .body("No existen usuarios registrados");
         }
         for (String[] x : fila) {
             UsuariosDTO dto = new UsuariosDTO();
@@ -57,7 +57,14 @@ public class UsuarioController {
     }
 
     @PostMapping("/register")
-    public void insertar(@RequestBody UsuarioDTO dto) {
+    public ResponseEntity<String> insertar(@RequestBody UsuarioDTO dto) {
+
+        // Validar si el correo ya existe
+        if (US.existsByCorreo(dto.getCorreo())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("El correo ya está registrado");
+        }
+
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
 
@@ -71,6 +78,10 @@ public class UsuarioController {
 
         // Insertamos usuario con roles en cascada
         US.insert(u);
+
+        // Respuesta correcta al frontend
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Usuario registrado correctamente.");
     }
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
