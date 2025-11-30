@@ -12,6 +12,7 @@ import pe.edu.upc.moneyproject.repositories.IUsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -20,21 +21,24 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
-        Usuario usuario =rep.findOneByNombre(nombre);
+    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
+        Usuario usuario = rep.findByCorreo(correo);
+
         if (usuario == null) {
-            throw new UsernameNotFoundException("Usuario no encontrado");
+            throw new UsernameNotFoundException("Correo no encontrado: " + correo);
         }
 
-        List<GrantedAuthority> roles = new ArrayList<>();
+        // Convertir tus Roles -> Authorities
+        List<GrantedAuthority> authorities = usuario.getRoles()
+                .stream()
+                .map(rol -> new SimpleGrantedAuthority(rol.getRol()))
+                .collect(Collectors.toList());
 
-        usuario.getRoles().forEach(rol -> {
-            roles.add(new SimpleGrantedAuthority(rol.getRol()));
-        });
-
-        UserDetails ud = new org.springframework.security.core.userdetails.User(usuario.getNombre(), usuario.getContrasenia(),true, true, true, true, roles);
-
-        return ud;
+        return new org.springframework.security.core.userdetails.User(
+                usuario.getCorreo(),          // ahora username = correo
+                usuario.getContrasenia(),
+                authorities                    // ← ya no usuario.getAuthorities()
+        );
 
     }
 }

@@ -24,4 +24,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario,Integer> {
     @Query(value = "Select u.id_usuario, u.nombre, u.correo\n" +
             "from usuario u", nativeQuery = true)
     List<String[]> findUsuarios();
+
+    boolean existsByCorreo(String correo);
+    Usuario findByCorreo(String correo);
 }

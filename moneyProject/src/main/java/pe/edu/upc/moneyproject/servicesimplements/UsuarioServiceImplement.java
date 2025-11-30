@@ -24,7 +24,10 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void insert(Usuario usuario) {
-        // Encriptamos la contraseña antes de guardar
+        if (UR.findByCorreo(usuario.getCorreo()) != null) {
+            throw new RuntimeException("correo_duplicado");
+        }
+
         usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
         UR.save(usuario);
     }
@@ -47,6 +50,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Override
     public List<String[]> findUsuarios() {
         return UR.findUsuarios();
+    }
+
+    @Override
+    public boolean existsByCorreo(String correo) {
+        return UR.existsByCorreo(correo);
     }
 
 }

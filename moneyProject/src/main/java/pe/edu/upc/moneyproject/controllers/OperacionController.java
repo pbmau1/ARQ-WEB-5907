@@ -15,6 +15,7 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -65,16 +66,17 @@ public class OperacionController {
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
+    public ResponseEntity<?> eliminar(@PathVariable("id") Integer id){
         Operacion operacion = oS.listId(id);
         if(operacion==null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No existe un recurso con el ID: " + id);
+                    .body(Map.of("error", "No existe un recurso con el ID: " + id));
         }
-        oS.delete(id);
-        return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
-    }
 
+        oS.delete(id);
+
+        return ResponseEntity.ok(Map.of("message", "Operación eliminada correctamente"));
+    }
 
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
 

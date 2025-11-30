@@ -4,28 +4,23 @@ import java.io.Serializable;
 
 public class JwtRequestDTO implements Serializable {
     private static final long serialVersionUID = 5926468583005150707L;
-    private String nombre;
+    private String correo;
     private String contrasenia;
     public JwtRequestDTO() {
         super();
     }
 
-
-    public JwtRequestDTO(String nombre, String contrasenia) {
-        this.nombre = nombre;
+    public JwtRequestDTO(String correo, String contrasenia) {
+        this.correo = correo;
         this.contrasenia = contrasenia;
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
+    public String getCorreo() {
+        return correo;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContrasenia() {
