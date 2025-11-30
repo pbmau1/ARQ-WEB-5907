@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/usuarios")
@@ -147,5 +151,63 @@ public class UsuarioController {
 
         return ResponseEntity.ok(dto);
     }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @GetMapping("/me")
+    public ResponseEntity<UsuarioDTO> obtenerUsuarioActual() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String correo = auth.getName(); // correo del JWT
+
+        Usuario usuario = US.findByCorreo(correo);
+
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        ModelMapper m = new ModelMapper();
+        UsuarioDTO dto = m.map(usuario, UsuarioDTO.class);
+
+        return ResponseEntity.ok(dto);
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @PutMapping("/me")
+    public ResponseEntity<String> actualizarUsuarioActual(@RequestBody UsuarioDTO dto) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String correoActual = auth.getName();
+
+        Usuario usuario = US.findByCorreo(correoActual);
+
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+        }
+
+        // Actualizar nombre si cambió
+        if (dto.getNombre() != null && !dto.getNombre().isBlank()) {
+            usuario.setNombre(dto.getNombre());
+        }
+
+        // Actualizar correo, pero validando duplicado
+        if (dto.getCorreo() != null && !dto.getCorreo().isBlank()) {
+
+            String nuevoCorreo = dto.getCorreo();
+
+            if (!nuevoCorreo.equals(correoActual) && US.existsByCorreo(nuevoCorreo)) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("El correo ya está registrado");
+            }
+
+            usuario.setCorreo(nuevoCorreo);
+        }
+
+        // Si más adelante deseas permitir cambio de contraseña,
+        // debe hacerse en un endpoint separado por seguridad.
+
+        US.update(usuario);
+
+        return ResponseEntity.ok("Datos actualizados correctamente");
+    }
+
+
 
 }

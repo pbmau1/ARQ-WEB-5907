@@ -57,4 +57,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
         return UR.existsByCorreo(correo);
     }
 
+    @Override
+    public Usuario findByCorreo(String correo) {
+        return UR.findByCorreo(correo);
+    }
+
 }
