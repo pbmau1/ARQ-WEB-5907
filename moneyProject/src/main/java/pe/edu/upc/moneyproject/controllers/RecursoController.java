@@ -22,7 +22,7 @@ public class RecursoController {
     @Autowired
     private IRecursoService rS;
 
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar")
     public List<RecursoDTO> findAll() {
         return rS.findAll().stream().map(x->{
@@ -67,7 +67,7 @@ public class RecursoController {
         return ResponseEntity.ok("Recurso con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/recursoporautor")
     public ResponseEntity<?> listarporautor(@RequestParam String autor) {
         List<Recurso> recursos = rS.findRecursoByAutor(autor);
@@ -85,7 +85,7 @@ public class RecursoController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
      @GetMapping("/recursoporfecha")
     public ResponseEntity<?> listarporfecha(@RequestParam LocalDate fecha) {
         List<Recurso> recursoxfecha = rS.findRecursoByFechaPublicacion(fecha);
@@ -103,7 +103,7 @@ public class RecursoController {
     }
 
 
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT') ")
     @GetMapping("/listar/{id}")
     public ResponseEntity<RecursoDTO> findById(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);

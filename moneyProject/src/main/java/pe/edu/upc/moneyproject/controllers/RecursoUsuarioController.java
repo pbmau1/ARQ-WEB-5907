@@ -22,7 +22,7 @@ public class RecursoUsuarioController {
     @Autowired
     private IRecursoUsuarioService ruS;
 
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
     @GetMapping("/listar")
     public List<RecursoUsuarioDTO> findAll(){
         return ruS.findAll().stream().map(x->{
@@ -30,7 +30,7 @@ public class RecursoUsuarioController {
             return m.map(x,RecursoUsuarioDTO.class);
         }).collect(Collectors.toList());
     }
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT') ")
     @PostMapping("/register")
     public void insert(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
@@ -38,7 +38,7 @@ public class RecursoUsuarioController {
         ruS.insert(recursoUsuario);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT') ")
     @PutMapping("/update")
     public ResponseEntity<String> modificar(@RequestBody RecursoUsuarioDTO recursoUsuarioDTO){
         ModelMapper m = new ModelMapper();
@@ -54,7 +54,7 @@ public class RecursoUsuarioController {
         return ResponseEntity.ok("Registro con ID " + ru.getIdRecursoUsuario() + " modificado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
         RecursoUsuario recursoUsuarioExiste = ruS.listId(id);
@@ -66,7 +66,7 @@ public class RecursoUsuarioController {
         return ResponseEntity.ok("Operación con ID " + id + " eliminado correctamente.");
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') ")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT') ")
     @GetMapping("/listar/{id}")
     public ResponseEntity<RecursoUsuarioDTO> findById(@PathVariable("id") Integer id) {
         RecursoUsuario recursoUsuario = ruS.listId(id);
