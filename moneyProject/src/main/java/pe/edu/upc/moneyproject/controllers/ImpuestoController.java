@@ -31,7 +31,7 @@ public class ImpuestoController {
         }).collect(Collectors.toList());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/register")
     public void insert(@RequestBody ImpuestoDTO impuestoDTO) {
         ModelMapper m = new ModelMapper();
@@ -39,7 +39,7 @@ public class ImpuestoController {
         iS.insert(impuesto);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/update")
         public ResponseEntity<String> modificar(@RequestBody ImpuestoDTO impuestoDTO){
             ModelMapper m = new ModelMapper();
@@ -55,7 +55,7 @@ public class ImpuestoController {
             return ResponseEntity.ok("Impuesto con ID " + impuesto.getIdImpuesto() + " modificado correctamente.");
         }
 
-    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENT')")
+    @PreAuthorize("hasAuthority('ADMIN')")
         @DeleteMapping("/delete/{id}")
         public ResponseEntity<String> eliminar(@PathVariable("id") Integer id){
             Impuesto impuesto = iS.listId(id);
