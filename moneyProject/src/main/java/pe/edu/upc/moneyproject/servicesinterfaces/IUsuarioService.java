@@ -13,4 +13,5 @@ public interface IUsuarioService {
     public Usuario listId(int id);
     List<String[]> findUsuarios();
     boolean existsByCorreo(String correo);
+    Usuario findByCorreo(String correo);
 }

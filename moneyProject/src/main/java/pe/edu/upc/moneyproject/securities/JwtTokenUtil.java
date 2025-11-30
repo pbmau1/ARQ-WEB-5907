@@ -3,13 +3,14 @@ package pe.edu.upc.moneyproject.securities;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.xml.bind.DatatypeConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.SecretKey;
 import java.io.Serializable;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +19,26 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenUtil implements Serializable {
+
     private static final long serialVersionUID = -2550185165626007488L;
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60 * 1000;
 
     @Value("${jwt.secret}")
     private String secret;
+
+    // ===========================================================
+    // CONVERTIR TU SECRET HEX en BYTES PARA HS512 (CORRECTO)
+    // ===========================================================
+    private SecretKey getSigningKey() {
+        byte[] keyBytes = hexToBytes(secret);     // ← Antes era Base64.decode()
+        return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS512.getJcaName());
+    }
+
+    private byte[] hexToBytes(String hex) {
+        return DatatypeConverter.parseHexBinary(hex);
+    }
+    // ===========================================================
 
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
@@ -39,7 +54,11 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                .setSigningKey(getSigningKey())     // 🔥 Firma correcta con tu clave HEX
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -47,6 +66,7 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
+    // GENERAR TOKEN CORRECTAMENTE
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("roles", userDetails.getAuthorities().stream()
@@ -57,13 +77,19 @@ public class JwtTokenUtil implements Serializable {
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
 
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
-                .signWith(new SecretKeySpec(Base64.getDecoder().decode(secret), SignatureAlgorithm.HS512.getJcaName())).compact();
+                .signWith(getSigningKey(), SignatureAlgorithm.HS512)   //Firma correcta
+                .compact();
     }
 
+    // 🔵 VALIDAR TOKEN (Firma + expiración)
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
+
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
