@@ -13,6 +13,7 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
 import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -181,6 +182,20 @@ public class OperacionController {
     }
 
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @GetMapping("/busquedafecha")
+    public ResponseEntity<?> buscarPorFecha(@RequestParam("f") String fecha) {
+        LocalDate f = LocalDate.parse(fecha);
+        return ResponseEntity.ok(oS.searchOp(f));
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+    @GetMapping("/listarporcategoria")
+    public ResponseEntity<?> listarPorCategoria(@RequestParam("categoria") String categoria) {
+        return ResponseEntity.ok(oS.findOperacionByCategoria(categoria));
+    }
+
+
     private void actualizarCampos(Operacion op, OperacionDTO dto) {
         op.setCategoria(dto.getCategoria());
         op.setTipo(dto.getTipo());
@@ -202,4 +217,6 @@ public class OperacionController {
                 .stream()
                 .anyMatch(a -> a.getAuthority().equals(rol));
     }
+
+
 }
