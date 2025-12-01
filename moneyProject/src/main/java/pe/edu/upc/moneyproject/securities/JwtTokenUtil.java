@@ -2,94 +2,96 @@ package pe.edu.upc.moneyproject.securities;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import jakarta.xml.bind.DatatypeConverter;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.spec.SecretKeySpec;
 import javax.crypto.SecretKey;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Component
-public class JwtTokenUtil implements Serializable {
-
-    private static final long serialVersionUID = -2550185165626007488L;
+public class JwtTokenUtil {
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60 * 1000;
 
     @Value("${jwt.secret}")
     private String secret;
 
-    // ===========================================================
-    // CONVERTIR TU SECRET HEX en BYTES PARA HS512 (CORRECTO)
-    // ===========================================================
-    private SecretKey getSigningKey() {
-        byte[] keyBytes = hexToBytes(secret);     // ← Antes era Base64.decode()
-        return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS512.getJcaName());
+    private SecretKey signingKey;
+
+    @PostConstruct
+    public void init() {
+        // Convertir tu SECRET en una clave válida para HS512
+        signingKey = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    private byte[] hexToBytes(String hex) {
-        return DatatypeConverter.parseHexBinary(hex);
+    // ============================================
+    // EXTRAER CLAIMS
+    // ============================================
+    private Claims getAllClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(signingKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
-    // ===========================================================
 
     public String getUsernameFromToken(String token) {
-        return getClaimFromToken(token, Claims::getSubject);
+        return getAllClaims(token).getSubject();
     }
 
-    public Date getExpirationDateFromToken(String token) {
-        return getClaimFromToken(token, Claims::getExpiration);
+    public Date getExpiration(String token) {
+        return getAllClaims(token).getExpiration();
     }
 
-    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getAllClaimsFromToken(token);
-        return claimsResolver.apply(claims);
+    private boolean isExpired(String token) {
+        return getExpiration(token).before(new Date());
     }
 
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()
-                .setSigningKey(getSigningKey())     // 🔥 Firma correcta con tu clave HEX
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
-    private Boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
-    }
-
-    // GENERAR TOKEN CORRECTAMENTE
-    public String generateToken(UserDetails userDetails) {
+    // ============================================
+    // GENERAR TOKEN
+    // ============================================
+    public String generateToken(UserDetails userDetails, int idUsuario) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("roles", userDetails.getAuthorities().stream()
-                .map(r -> r.getAuthority())
-                .collect(Collectors.toList()));
-        return doGenerateToken(claims, userDetails.getUsername());
+
+        claims.put("roles", userDetails.getAuthorities());
+        claims.put("id", idUsuario);  // NECESARIO para permisos por ID
+
+        return createToken(claims, userDetails.getUsername());
     }
 
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS512)   //Firma correcta
+                .claims(claims)
+                .subject(subject)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
+                .signWith(signingKey, Jwts.SIG.HS512)   // 👈 firma correcta con JJWT 0.13.0
                 .compact();
     }
 
-    // 🔵 VALIDAR TOKEN (Firma + expiración)
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = getUsernameFromToken(token);
+    // ============================================
+    // VALIDAR TOKEN
+    // ============================================
+    public boolean validateToken(String token, UserDetails userDetails) {
+        try {
+            final String username = getUsernameFromToken(token);
+            return username.equals(userDetails.getUsername()) && !isExpired(token);
+        } catch (SignatureException e) {
+            return false;
+        }
+    }
 
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    // ============================================
+    // EXTRA: OBTENER ID desde el token
+    // ============================================
+    public Integer getIdFromToken(String token) {
+        return getAllClaims(token).get("id", Integer.class);
     }
 }

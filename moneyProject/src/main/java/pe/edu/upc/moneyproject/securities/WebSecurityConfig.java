@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -57,26 +58,38 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        //Desde Spring Boot 3.1+
-        httpSecurity
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults()) // 👈 habilita CORS
+                .cors(Customizer.withDefaults())
 
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/login/**",
-                                "/v3/api-docs/**",
+                        .requestMatchers(
+                                "/login/**",
+                                "/authenticate/**",
+                                "/usuarios/register",
                                 "/swagger-ui/**",
-                                "/usuarios/register"
-                                 ).permitAll()
+                                "/v3/api-docs/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
+
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
+                .exceptionHandling(e ->
+                        e.authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                )
+
                 .formLogin(AbstractHttpConfigurer::disable)
-                .exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint))
-                .sessionManagement(Customizer.withDefaults());
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-        return httpSecurity.build();
+                .httpBasic(AbstractHttpConfigurer::disable);
+
+        // JWT Filter
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
     }
     @Bean
     public CorsFilter corsFilter() {

@@ -28,17 +28,21 @@ public class JwtUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("Correo no encontrado: " + correo);
         }
 
-        // Convertir tus Roles -> Authorities
-        List<GrantedAuthority> authorities = usuario.getRoles()
-                .stream()
-                .map(rol -> new SimpleGrantedAuthority(rol.getRol()))
-                .collect(Collectors.toList());
+        // Seguridad: evitar null
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if (usuario.getRoles() != null) {
+            authorities = usuario.getRoles()
+                    .stream()
+                    .map(rol -> new SimpleGrantedAuthority(rol.getRol()))
+                    .collect(Collectors.toList());
+        }
 
         return new org.springframework.security.core.userdetails.User(
-                usuario.getCorreo(),          // ahora username = correo
+                usuario.getCorreo(),
                 usuario.getContrasenia(),
-                authorities                    // ← ya no usuario.getAuthorities()
+                authorities
         );
-
     }
+
 }
