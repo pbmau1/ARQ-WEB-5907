@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.moneyproject.dtos.OperacionDTO;
+import pe.edu.upc.moneyproject.dtos.SumaOpPorUsDTO;
 import pe.edu.upc.moneyproject.entities.Operacion;
 import pe.edu.upc.moneyproject.entities.Usuario;
 import pe.edu.upc.moneyproject.servicesinterfaces.IOperacionService;
@@ -14,6 +15,7 @@ import pe.edu.upc.moneyproject.servicesinterfaces.IUsuarioService;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -216,6 +218,31 @@ public class OperacionController {
                 .getAuthorities()
                 .stream()
                 .anyMatch(a -> a.getAuthority().equals(rol));
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('CLIENT')")
+
+    @GetMapping("/suma-por-usuario")
+    public ResponseEntity<?> sumaOperacionesPorUsuario() {
+
+        List<SumaOpPorUsDTO> listaDto = new ArrayList<>();
+        List<Object[]> filas = oS.sumaOperacionesPorUsuario();
+
+        if (filas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existen operaciones registradas");
+        }
+
+        for (Object[] x : filas) {
+            SumaOpPorUsDTO dto = new SumaOpPorUsDTO();
+            dto.setIdUsuario(((Number) x[0]).intValue());        // id_usuario
+            dto.setNombre((String) x[1]);                        // nombre
+            dto.setTotalIngresos(((Number) x[2]).doubleValue()); // total_ingresos
+            dto.setTotalGastos(((Number) x[3]).doubleValue());   // total_gastos
+            listaDto.add(dto);
+        }
+
+        return ResponseEntity.ok(listaDto);
     }
 
 
