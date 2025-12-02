@@ -1,7 +1,7 @@
 # ---------------------------
 #  ETAPA 1: BUILD CON MAVEN
 # ---------------------------
-FROM maven:3.9.11-eclipse-temurin-21 AS builder
+FROM maven:3.9.11-eclipse-temurin-24 AS builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN ./mvnw clean package -DskipTests
 # ---------------------------
 #  ETAPA 2: RUNTIME
 # ---------------------------
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:24-jre
 
 WORKDIR /app
 
