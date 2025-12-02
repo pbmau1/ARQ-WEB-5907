@@ -1,12 +1,16 @@
+FROM eclipse-temurin:23-jdk as builder
+
+
+WORKDIR /app
 
 COPY . .
-RUN mvn dependency:go-offline -B
+
 
 
 RUN ./mvnw clean package -DskipTests
 
 
-FROM eclipse-temurin:23-jdk
+FROM eclipse-temurin:23-jre
 
 WORKDIR /app
 
