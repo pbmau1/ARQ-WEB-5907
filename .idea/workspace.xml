@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56a1381b-291c-4e0c-b669-a5174b16becc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/ImpuestoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/RecursoUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/BalanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/java/pe/edu/upc/moneyproject/controllers/OperacionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moneyProject/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +156,8 @@
       <workItem from="1764343669131" duration="25395000" />
       <workItem from="1764428454852" duration="6022000" />
       <workItem from="1764466153968" duration="2763000" />
-      <workItem from="1764518840897" duration="9293000" />
+      <workItem from="1764518840897" duration="13186000" />
+      <workItem from="1764620669306" duration="14306000" />
     </task>
     <servers />
   </component>

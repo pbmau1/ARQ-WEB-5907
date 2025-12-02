@@ -90,7 +90,7 @@ public class BalanceController {
         return ResponseEntity.ok(listaDTO);
     }
 
-    @PreAuthorize(" hasAuthority('CLIENT')")
+    @PreAuthorize(" hasAuthority('ADMIN')" )
     @GetMapping("/sumadores") //siempre asignarle las rutas sin que se repitan los nombres
     public ResponseEntity<?> sumadetotalingr() {
         List<sumatotalingresosBalanceDTO>listaDto=new ArrayList<sumatotalingresosBalanceDTO>();
@@ -108,6 +108,7 @@ public class BalanceController {
         }
         return ResponseEntity.ok(listaDto);
     }
+
     @PreAuthorize(" hasAuthority('CLIENT')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<BalanceDTO> findById(@PathVariable("id") Integer id) {
@@ -122,6 +123,8 @@ public class BalanceController {
 
         return ResponseEntity.ok(dto);
     }
+
+
 
 
 
