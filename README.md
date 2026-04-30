@@ -32,10 +32,12 @@ Reportes Financieros: Permite visualizar información resumida mediante consulta
 Gestión de Usuarios y Roles: Permite controlar el acceso al sistema mediante usuarios, roles e inicio de sesión.
 Consejos Financieros: Ofrece recomendaciones para mejorar la administración del dinero.
 
-DESCRIPCIÓN DEL FRONTEND
+DESCRIPCIÓN DEL BACKEND
 
-El frontend de MoneyMentor corresponde a la parte visual e interactiva de la plataforma web. Esta sección permite que el usuario pueda navegar por el sistema, registrarse, iniciar sesión, visualizar su perfil y acceder a las principales funcionalidades financieras de la aplicación.
+El backend de MoneyMentor corresponde a la parte lógica y funcional del sistema. Es el encargado de procesar la información enviada desde el frontend, aplicar las reglas de negocio, gestionar la seguridad del sistema y conectar la plataforma con la base de datos.
 
-Desde el frontend, el usuario puede registrar operaciones, consultar balances, gestionar ahorros, revisar recursos financieros, visualizar reportes, acceder a secciones de impuestos y utilizar formularios, tablas, filtros y botones de navegación. Su diseño se basa en los lineamientos UX/UI definidos para el proyecto, considerando una interfaz clara, moderna y fácil de usar.
+El backend está desarrollado como una API REST utilizando Spring Boot y PostgreSQL. A través de sus endpoints, permite gestionar módulos como usuarios, roles, operaciones, balances, ahorros, recursos, impuestos, impuesto-operación y usuario-recurso.
 
-El frontend se comunica con el backend mediante peticiones HTTP, lo que permite enviar, consultar, actualizar y eliminar información del sistema. Además, su despliegue se realiza en una plataforma web, permitiendo que MoneyMentor sea accesible desde un navegador.
+Esta capa permite realizar operaciones CRUD, es decir, crear, listar, actualizar y eliminar registros. Además, incorpora consultas avanzadas, como búsqueda de balances por mes, ahorros por periodo, suma de operaciones por usuario, búsqueda de recursos por autor o fecha, y cálculo de promedios de impuestos.
+
+En conjunto, el backend garantiza que MoneyMentor funcione de manera ordenada, segura y escalable, permitiendo que los datos financieros del usuario sean almacenados y consultados correctamente dentro de la plataforma.
