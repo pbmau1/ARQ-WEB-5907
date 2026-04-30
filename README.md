@@ -1,7 +1,8 @@
 MONEY MENTOR - IHC - 2025-2
+BACKEND
 INFORMACIÓN DEL PROYECTO
 
-MoneyMentor es una plataforma web integral diseñada para simplificar la administración financiera de jóvenes mediante el registro de operaciones, gestión de balances, control de ahorros, análisis de impuestos, recursos educativos y reportes financieros. La plataforma busca ayudar a los usuarios a organizar sus ingresos y egresos, comprender mejor su situación financiera y tomar decisiones más responsables.
+MoneyMentor es una plataforma web integral orientada a la administración financiera de jóvenes emprendedores y jóvenes que laboran para una organización. Desde el enfoque backend, el proyecto se centra en construir la lógica principal del sistema, permitiendo procesar, almacenar y gestionar información financiera relacionada con usuarios, operaciones, balances, ahorros, recursos educativos, roles e impuestos.
 
 Este proyecto es desarrollado por la startup SmartSpend, una empresa dedicada a crear soluciones digitales que capacitan a los jóvenes para gestionar sus finanzas de manera efectiva y autónoma.
 
@@ -15,29 +16,29 @@ AUTORES
 
 SEGMENTOS OBJETIVOS
 
-• Jóvenes Emprendedores con su Propio Negocio: Incluye a quienes han iniciado su propio negocio o trabajan de manera independiente, como freelancers. Su principal reto es gestionar ingresos variables, separar sus finanzas personales de las de su negocio y llevar un mejor control de operaciones, ahorros e impuestos.
+• Jóvenes Emprendedores con su Propio Negocio: Incluye a quienes trabajan de manera independiente o tienen un negocio propio. Desde el backend, este segmento requiere funcionalidades que permitan registrar ingresos variables, controlar gastos, gestionar ahorros, calcular balances y asociar impuestos a sus operaciones financieras.
 
-• Jóvenes que Laboran para una Organización: Dirigido a quienes trabajan medio tiempo o tiempo completo para una empresa. Estos usuarios suelen tener ingresos estables y buscan optimizar sus finanzas personales mediante el control de gastos, planificación de ahorros, revisión de balances y cumplimiento de metas financieras.
+• Jóvenes que Laboran para una Organización: Dirigido a quienes cuentan con ingresos más estables. Desde el backend, este segmento necesita servicios que permitan registrar operaciones financieras, consultar balances mensuales, controlar metas de ahorro y acceder a recursos financieros que ayuden a mejorar su planificación económica.
 
-PRINCIPALES CARACTERÍSTICAS
+PRINCIPALES CARACTERÍSTICAS DEL BACKEND
 
-MoneyMentor facilita la organización financiera mediante diversas herramientas:
+MoneyMentor cuenta con una arquitectura backend que permite gestionar la información principal del sistema mediante una API REST:
 
-Registro de Operaciones: Permite registrar ingresos, egresos y movimientos financieros del usuario.
-Gestión de Balance: Muestra el estado financiero del usuario según sus ingresos, gastos y ahorros.
-Gestión de Ahorros: Permite registrar, consultar, editar y analizar metas de ahorro.
-Análisis de Impuestos: Ayuda a asociar impuestos a operaciones financieras y calcular información relacionada.
-Recursos Financieros: Brinda materiales educativos como artículos, guías o contenidos informativos.
-Reportes Financieros: Permite visualizar información resumida mediante consultas, filtros y análisis de datos.
-Gestión de Usuarios y Roles: Permite controlar el acceso al sistema mediante usuarios, roles e inicio de sesión.
-Consejos Financieros: Ofrece recomendaciones para mejorar la administración del dinero.
-
+Gestión de Usuarios: Permite registrar, listar, consultar y eliminar usuarios dentro del sistema.
+Gestión de Roles: Permite asignar roles a los usuarios para controlar sus permisos y accesos.
+Gestión de Operaciones: Permite registrar, actualizar, eliminar y consultar operaciones financieras como ingresos o egresos.
+Gestión de Balance: Permite registrar y consultar balances financieros, incluyendo filtros por mes y sumas totales.
+Gestión de Ahorros: Permite administrar metas de ahorro, consultar ahorros por rango, periodo o ID.
+Gestión de Impuestos: Permite registrar, listar, editar y eliminar impuestos asociados a operaciones.
+Gestión de Recursos: Permite administrar recursos educativos o financieros, filtrarlos por autor o fecha.
+Seguridad del Sistema: Permite implementar inicio y cierre de sesión para proteger el acceso a la plataforma.
+Consultas Avanzadas: Permite generar reportes y métricas financieras básicas para que el usuario comprenda mejor su situación económica.
 DESCRIPCIÓN DEL BACKEND
 
-El backend de MoneyMentor corresponde a la parte lógica y funcional del sistema. Es el encargado de procesar la información enviada desde el frontend, aplicar las reglas de negocio, gestionar la seguridad del sistema y conectar la plataforma con la base de datos.
+El backend de MoneyMentor corresponde a la capa lógica y funcional del sistema. Su función principal es recibir las solicitudes del frontend, procesar la información financiera del usuario, aplicar reglas de negocio y conectar la plataforma con la base de datos.
 
-El backend está desarrollado como una API REST utilizando Spring Boot y PostgreSQL. A través de sus endpoints, permite gestionar módulos como usuarios, roles, operaciones, balances, ahorros, recursos, impuestos, impuesto-operación y usuario-recurso.
+Esta capa está desarrollada como una API REST utilizando Spring Boot y PostgreSQL. A través de sus endpoints, el sistema permite gestionar módulos como Usuario, Roles, Operación, Balance, Ahorros, Recurso, Usuario-Recurso, Impuesto e Impuesto-Operación.
 
-Esta capa permite realizar operaciones CRUD, es decir, crear, listar, actualizar y eliminar registros. Además, incorpora consultas avanzadas, como búsqueda de balances por mes, ahorros por periodo, suma de operaciones por usuario, búsqueda de recursos por autor o fecha, y cálculo de promedios de impuestos.
+El backend permite realizar operaciones CRUD, es decir, crear, listar, actualizar y eliminar registros. Además, incorpora consultas avanzadas como búsqueda de balances por mes, ahorros por periodo, suma de operaciones por usuario, búsqueda de recursos por autor o fecha y cálculo de promedios de impuestos.
 
-En conjunto, el backend garantiza que MoneyMentor funcione de manera ordenada, segura y escalable, permitiendo que los datos financieros del usuario sean almacenados y consultados correctamente dentro de la plataforma.
+En conjunto, el backend garantiza que MoneyMentor funcione de manera ordenada, segura y escalable, permitiendo que los datos financieros sean almacenados, procesados y consultados correctamente.
