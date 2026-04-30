@@ -1,5 +1,6 @@
 MONEY MENTOR - IHC - 2025-2
 BACKEND
+
 INFORMACIÓN DEL PROYECTO
 
 MoneyMentor es una plataforma web integral orientada a la administración financiera de jóvenes emprendedores y jóvenes que laboran para una organización. Desde el enfoque backend, el proyecto se centra en construir la lógica principal del sistema, permitiendo procesar, almacenar y gestionar información financiera relacionada con usuarios, operaciones, balances, ahorros, recursos educativos, roles e impuestos.
@@ -9,9 +10,13 @@ Este proyecto es desarrollado por la startup SmartSpend, una empresa dedicada a 
 AUTORES
 
 • Stefano Lucarelly Sanchez Heredia
+
 • Angie Sthefania Rosa Apaza Macotela
+
 • Mauricio Suwells Antonio Ascue
+
 • Omar Alessandro Collahua Huaranga
+
 • Orlando Gabriel Soto Ccopa
 
 SEGMENTOS OBJETIVOS
