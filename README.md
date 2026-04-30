@@ -25,14 +25,23 @@ PRINCIPALES CARACTERÍSTICAS DEL BACKEND
 MoneyMentor cuenta con una arquitectura backend que permite gestionar la información principal del sistema mediante una API REST:
 
 Gestión de Usuarios: Permite registrar, listar, consultar y eliminar usuarios dentro del sistema.
+
 Gestión de Roles: Permite asignar roles a los usuarios para controlar sus permisos y accesos.
+
 Gestión de Operaciones: Permite registrar, actualizar, eliminar y consultar operaciones financieras como ingresos o egresos.
+
 Gestión de Balance: Permite registrar y consultar balances financieros, incluyendo filtros por mes y sumas totales.
+
 Gestión de Ahorros: Permite administrar metas de ahorro, consultar ahorros por rango, periodo o ID.
+
 Gestión de Impuestos: Permite registrar, listar, editar y eliminar impuestos asociados a operaciones.
+
 Gestión de Recursos: Permite administrar recursos educativos o financieros, filtrarlos por autor o fecha.
+
 Seguridad del Sistema: Permite implementar inicio y cierre de sesión para proteger el acceso a la plataforma.
+
 Consultas Avanzadas: Permite generar reportes y métricas financieras básicas para que el usuario comprenda mejor su situación económica.
+
 DESCRIPCIÓN DEL BACKEND
 
 El backend de MoneyMentor corresponde a la capa lógica y funcional del sistema. Su función principal es recibir las solicitudes del frontend, procesar la información financiera del usuario, aplicar reglas de negocio y conectar la plataforma con la base de datos.
